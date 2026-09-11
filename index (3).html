@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="سایت سه‌بعدی تعاملی گیتار: نمایش ۳D انواع گیتار، تیونر، آکوردها، مترونوم، تاریخچه و آزمون. طراحی امیرمحمد فلاح">
+<meta name="author" content="Amir Mohammad Fallah">
+<meta name="theme-color" content="#0b0d12">
+<link rel="canonical" href="https://forstburn.github.io/Guitar-3D/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎸%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Guitar 3D">
+<meta property="og:title" content="Guitar 3D | دنیای گیتار در سه بُعد">
+<meta property="og:description" content="گیتار را بچرخانید، رنگش را عوض کنید، سیم‌هایش را بنوازید. تیونر، آکورد، مترونوم و آزمون.">
+<meta property="og:url" content="https://forstburn.github.io/Guitar-3D/">
+<meta property="og:image" content="https://forstburn.github.io/Guitar-3D/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:locale" content="fa_IR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Guitar 3D | دنیای گیتار در سه بُعد">
+<meta name="twitter:description" content="سایت سه‌بعدی تعاملی گیتار با تیونر، آکورد و مترونوم">
+<meta name="twitter:image" content="https://forstburn.github.io/Guitar-3D/og.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Guitar 3D","url":"https://forstburn.github.io/Guitar-3D/","author":{"@type":"Person","name":"Amir Mohammad Fallah"},"image":"https://forstburn.github.io/Guitar-3D/og.jpg","inLanguage":"fa"}</script>
+<title>Guitar 3D | دنیای گیتار در سه بُعد</title>
+<style>
+  :root{--bg:#0b0d12;--panel:rgba(18,21,30,.85);--accent:#22d3ee;--accent2:#8b5cf6;--text:#eef1f7;--muted:#9aa3b5;--border:rgba(255,255,255,.08)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Tahoma,"Segoe UI",Vazirmatn,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  /* NAV */
+  nav{position:fixed;top:0;right:0;left:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 32px;background:linear-gradient(to bottom,rgba(11,13,18,.95),rgba(11,13,18,0));backdrop-filter:blur(6px)}
+  nav .logo{font-weight:900;font-size:22px;letter-spacing:1px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  nav ul{display:flex;gap:22px;list-style:none;font-size:14px}
+  nav ul a{color:var(--muted);transition:.2s}nav ul a:hover{color:var(--accent)}
+  /* HERO */
+  #hero{position:relative;height:100vh;width:100%}
+  #hero canvas{display:block}
+  .hero-text{position:absolute;top:50%;right:6%;transform:translateY(-50%);max-width:480px;pointer-events:none}
+  .hero-text h1{font-size:56px;line-height:1.15;margin-bottom:14px}
+  .hero-text h1 span{color:var(--accent)}
+  .hero-text p{color:var(--muted);font-size:17px;line-height:1.8}
+  .hero-text .cta{pointer-events:auto;display:inline-block;margin-top:22px;padding:12px 28px;border-radius:30px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;font-weight:700;box-shadow:0 8px 30px rgba(34,211,238,.35);transition:.2s}
+  .hero-text .cta:hover{transform:translateY(-2px)}
+  /* CONTROL PANEL */
+  .panel{position:absolute;left:24px;top:90px;width:290px;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:16px;backdrop-filter:blur(12px);font-size:13px;max-height:calc(100vh - 120px);overflow-y:auto}
+  .panel h3{font-size:14px;margin-bottom:10px;color:var(--accent)}
+  .panel .group{margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+  .panel .group:last-child{border:none;margin:0}
+  .panel label{display:block;color:var(--muted);margin-bottom:6px}
+  .btns{display:flex;flex-wrap:wrap;gap:6px}
+  .btns button,.panel select{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--text);padding:6px 10px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:12px;transition:.15s}
+  .btns button:hover{background:rgba(255,255,255,.14)}
+  .btns button.active{background:var(--accent);color:#111;border-color:var(--accent)}
+  .swatches{display:flex;gap:8px;flex-wrap:wrap}
+  .sw{width:28px;height:28px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:.15s}
+  .sw:hover{transform:scale(1.15)}.sw.active{border-color:#fff}
+  input[type=range]{width:100%;accent-color:var(--accent)}
+  .toggle{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  .toggle input{accent-color:var(--accent);transform:scale(1.2)}
+  .hint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:var(--muted);font-size:12px;background:var(--panel);padding:6px 14px;border-radius:20px;border:1px solid var(--border)}
+  /* stats */
+  #stats{position:absolute;right:24px;bottom:24px;background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-size:12px;color:var(--muted);direction:ltr}
+  /* SECTIONS */
+  section{padding:90px 8%;max-width:1300px;margin:auto}
+  section h2{font-size:38px;margin-bottom:12px}
+  section h2 span{color:var(--accent)}
+  section .sub{color:var(--muted);font-size:16px;margin-bottom:40px;line-height:1.8}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:22px;transition:.25s;position:relative;overflow:hidden}
+  .card:hover{transform:translateY(-6px);border-color:rgba(34,211,238,.5);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+  .card h4{font-size:18px;margin-bottom:8px;color:var(--accent)}
+  .card p{color:var(--muted);font-size:14px;line-height:1.8}
+  .card .ic{font-size:36px;margin-bottom:10px}
+  /* PARTS */
+  .parts-wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+  .part-list{display:flex;flex-direction:column;gap:8px}
+  .part-list button{text-align:right;background:var(--panel);border:1px solid var(--border);color:var(--text);padding:12px 16px;border-radius:10px;cursor:pointer;font-family:inherit;font-size:14px;transition:.2s}
+  .part-list button:hover,.part-list button.active{border-color:var(--accent);background:rgba(34,211,238,.12)}
+  .part-info{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:26px;min-height:200px;position:sticky;top:90px}
+  .part-info h4{font-size:22px;color:var(--accent);margin-bottom:10px}
+  .part-info p{color:var(--muted);line-height:1.9}
+  /* TIMELINE */
+  .timeline{position:relative;padding-right:30px;border-right:2px solid rgba(34,211,238,.3)}
+  .tl{position:relative;margin-bottom:34px;padding-right:20px}
+  .tl::before{content:"";position:absolute;right:-37px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(34,211,238,.2)}
+  .tl .yr{font-weight:800;color:var(--accent);font-size:18px}
+  .tl p{color:var(--muted);line-height:1.8;margin-top:4px}
+  /* TUNER */
+  .tuner{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:16px}
+  .tuner button{background:linear-gradient(180deg,#1a1e28,#0f1218);border:1px solid var(--border);border-radius:14px;padding:20px 8px;color:var(--text);cursor:pointer;font-family:inherit;transition:.2s}
+  .tuner button:hover{border-color:var(--accent);transform:scale(1.04)}
+  .tuner button:active{background:var(--accent);color:#111}
+  .tuner .n{font-size:28px;font-weight:900}.tuner .f{font-size:11px;color:var(--muted);direction:ltr}
+  .tuning-sel{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .tuning-sel button{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--text);padding:8px 14px;border-radius:20px;cursor:pointer;font-family:inherit}
+  .tuning-sel button.active{background:var(--accent);color:#111}
+  /* CHORDS */
+  .chord-nav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+  .chord-nav button{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--text);padding:8px 16px;border-radius:8px;cursor:pointer;font-family:inherit;font-weight:700;direction:ltr}
+  .chord-nav button.active{background:var(--accent);color:#111}
+  .chord-box{display:flex;gap:40px;align-items:center;flex-wrap:wrap;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:30px}
+  .chord-box svg{direction:ltr}
+  .chord-box .d{flex:1;min-width:240px}
+  .chord-box .d h4{font-size:26px;color:var(--accent);direction:ltr;text-align:right}
+  .chord-box .d p{color:var(--muted);line-height:1.9;margin-top:10px}
+  .play-btn{margin-top:14px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;border:none;padding:10px 24px;border-radius:24px;font-weight:700;cursor:pointer;font-family:inherit}
+  /* METRONOME */
+  .metro{display:flex;gap:30px;align-items:center;flex-wrap:wrap;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:30px}
+  .metro .bpm{font-size:64px;font-weight:900;color:var(--accent);direction:ltr;min-width:140px;text-align:center}
+  .metro .beat{display:flex;gap:10px}
+  .metro .beat i{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.1);transition:.1s}
+  .metro .beat i.on{background:var(--accent);box-shadow:0 0 14px var(--accent)}
+  /* QUIZ */
+  .quiz{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:30px}
+  .quiz .q{font-size:20px;margin-bottom:18px}
+  .quiz .opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .quiz .opts button{background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--text);padding:14px;border-radius:10px;cursor:pointer;font-family:inherit;font-size:15px;transition:.2s}
+  .quiz .opts button:hover{border-color:var(--accent)}
+  .quiz .opts button.ok{background:#2e7d4f;border-color:#2e7d4f}.quiz .opts button.bad{background:#8b2f2f;border-color:#8b2f2f}
+  .quiz .score{margin-top:16px;color:var(--muted)}
+  /* GALLERY */
+  .gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .gal .g{height:180px;border-radius:14px;position:relative;overflow:hidden;cursor:pointer;border:1px solid var(--border)}
+  .gal .g svg{width:100%;height:100%}
+  .gal .g span{position:absolute;bottom:10px;right:12px;font-weight:700;text-shadow:0 2px 6px #000}
+  footer{text-align:center;padding:40px;color:var(--muted);font-size:13px;border-top:1px solid var(--border)}
+  .reveal{opacity:0;transform:translateY(30px);transition:.7s}.reveal.in{opacity:1;transform:none}
+  @media(max-width:900px){.panel{display:none}.hero-text h1{font-size:36px}.parts-wrap{grid-template-columns:1fr}.tuner{grid-template-columns:repeat(3,1fr)}nav ul{display:none}}
+
+  /* ===== 3D UI upgrades ===== */
+  body{background:radial-gradient(1200px 600px at 80% -10%,rgba(34,211,238,.08),transparent 60%),radial-gradient(900px 500px at 10% 30%,rgba(139,92,246,.06),transparent 60%),var(--bg)}
+  section{perspective:1200px}
+  .card,.tl,.part-list button,.tuner button,.chord-box,.metro,.quiz,.gal .g{transform-style:preserve-3d;will-change:transform}
+  .card{background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.01));box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08)}
+  .card::after{content:"";position:absolute;inset:-1px;border-radius:16px;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(34,211,238,.18),transparent 45%);opacity:0;transition:.3s;pointer-events:none}
+  .card:hover::after{opacity:1}
+  .card .ic{display:inline-block;transform:translateZ(40px);filter:drop-shadow(0 8px 12px rgba(0,0,0,.5))}
+  .card h4{transform:translateZ(25px)}.card p{transform:translateZ(10px)}
+  .tilt{transition:transform .15s ease-out,box-shadow .3s,border-color .3s}
+  .tuner button{background:linear-gradient(180deg,#22283a,#0d1017);box-shadow:0 8px 0 #05070b,0 14px 24px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.1)}
+  .tuner button:active{transform:translateY(6px)!important;box-shadow:0 2px 0 #05070b,0 4px 10px rgba(0,0,0,.5)}
+  .tuner .n{background:linear-gradient(180deg,#fff,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .chord-box svg{filter:drop-shadow(0 20px 25px rgba(0,0,0,.6));transform:rotateY(-14deg) rotateX(6deg);transition:.5s}
+  .chord-box:hover svg{transform:rotateY(0) rotateX(0)}
+  .metro .bpm{text-shadow:0 0 30px rgba(34,211,238,.6),0 6px 0 rgba(0,0,0,.6)}
+  .metro .beat i{box-shadow:inset 0 2px 4px rgba(0,0,0,.6)}
+  .metro .beat i.on{transform:scale(1.35)}
+  .tl::before{box-shadow:0 0 0 5px rgba(34,211,238,.2),0 0 22px var(--accent)}
+  .tl{background:linear-gradient(90deg,rgba(255,255,255,.03),transparent);border-radius:10px;padding:10px 20px 10px 10px}
+  .gal .g{box-shadow:0 15px 35px rgba(0,0,0,.5)}
+  .gal .g canvas{width:100%;height:100%;display:block}
+  .quiz .opts button{box-shadow:0 4px 0 rgba(0,0,0,.5)}.quiz .opts button:active{transform:translateY(3px);box-shadow:none}
+  .panel{box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08)}
+  .hero-text h1{text-shadow:0 10px 30px rgba(0,0,0,.6)}
+  .hero-text h1 span{text-shadow:0 0 40px rgba(34,211,238,.7)}
+  .stage-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 100%,rgba(34,211,238,.12),transparent 55%)}
+  section h2{position:relative;display:inline-block}
+  section h2::after{content:"";position:absolute;right:0;bottom:-8px;width:60%;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--accent),transparent)}
+  .eq{display:flex;gap:4px;align-items:flex-end;height:40px;margin-top:14px}
+  .eq i{flex:1;background:linear-gradient(180deg,var(--accent),var(--accent2));border-radius:2px;height:20%;transition:height .08s}
+
+  /* ===== AUTH ===== */
+  .authbar{display:flex;gap:10px;align-items:center}
+  .authbar button{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0b0d12;border:none;padding:8px 18px;border-radius:20px;font-weight:700;cursor:pointer;font-family:inherit;font-size:13px;box-shadow:0 6px 20px rgba(34,211,238,.3)}
+  .authbar .ghost{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--border);box-shadow:none}
+  .avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-weight:900;color:#0b0d12;cursor:pointer;box-shadow:0 0 0 2px rgba(255,255,255,.1)}
+  .umenu{position:absolute;top:60px;left:32px;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:10px;min-width:220px;display:none;backdrop-filter:blur(12px);box-shadow:0 20px 50px rgba(0,0,0,.5);z-index:60}
+  .umenu.open{display:block}
+  .umenu .u{padding:8px 10px;border-bottom:1px solid var(--border);margin-bottom:6px}
+  .umenu .u b{display:block;color:var(--accent)}.umenu .u small{color:var(--muted)}
+  .umenu button{display:block;width:100%;text-align:right;background:none;border:none;color:var(--text);padding:9px 10px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:13px}
+  .umenu button:hover{background:rgba(255,255,255,.08)}
+  .modal{position:fixed;inset:0;background:rgba(3,5,10,.7);backdrop-filter:blur(8px);display:none;place-items:center;z-index:100;perspective:1200px}
+  .modal.open{display:grid}
+  .mbox{width:min(420px,92vw);background:linear-gradient(160deg,rgba(24,28,40,.95),rgba(12,14,20,.98));border:1px solid var(--border);border-radius:22px;padding:30px;box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 1px rgba(34,211,238,.15),inset 0 1px 0 rgba(255,255,255,.08);animation:pop .5s cubic-bezier(.2,.9,.3,1.2);position:relative}
+  @keyframes pop{from{transform:rotateX(-20deg) translateY(40px) scale(.9);opacity:0}}
+  .mbox h3{font-size:24px;margin-bottom:6px}.mbox h3 span{color:var(--accent)}
+  .mbox .sub2{color:var(--muted);font-size:13px;margin-bottom:20px}
+  .mbox .tabs{display:flex;background:rgba(255,255,255,.05);border-radius:12px;padding:4px;margin-bottom:20px}
+  .mbox .tabs button{flex:1;background:none;border:none;color:var(--muted);padding:9px;border-radius:9px;cursor:pointer;font-family:inherit;font-weight:700;transition:.2s}
+  .mbox .tabs button.active{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0b0d12}
+  .field{margin-bottom:14px}.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+  .field input,.field select{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--border);color:var(--text);padding:11px 14px;border-radius:10px;font-family:inherit;font-size:14px;outline:none;transition:.2s}
+  .field input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(34,211,238,.15)}
+  .strength{height:4px;border-radius:4px;background:rgba(255,255,255,.08);margin-top:6px;overflow:hidden}.strength i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ef4444,#f59e0b,#22c55e);transition:.3s}
+  .mbox .go{width:100%;margin-top:6px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#0b0d12;border:none;padding:13px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer;font-family:inherit;box-shadow:0 10px 30px rgba(34,211,238,.3);transition:.2s}
+  .mbox .go:hover{transform:translateY(-2px)}
+  .mbox .err{color:#f87171;font-size:12px;min-height:16px;margin-top:8px}
+  .mbox .x{position:absolute;top:14px;left:16px;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,80px);background:var(--panel);border:1px solid var(--accent);color:var(--text);padding:12px 22px;border-radius:30px;z-index:200;transition:.4s;box-shadow:0 10px 40px rgba(34,211,238,.3)}
+  .toast.show{transform:translate(-50%,0)}
+  .saved-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-top:20px}
+  .saved-list .s{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:14px;cursor:pointer;transition:.2s;position:relative}
+  .saved-list .s:hover{border-color:var(--accent);transform:translateY(-4px)}
+  .saved-list .s i{display:block;width:100%;height:60px;border-radius:8px;margin-bottom:8px}
+  .saved-list .s b{font-size:14px}.saved-list .s small{color:var(--muted);display:block}
+  .saved-list .s .del{position:absolute;top:8px;left:8px;background:rgba(239,68,68,.2);border:none;color:#f87171;border-radius:6px;padding:2px 7px;cursor:pointer}
+  .locked{opacity:.6;text-align:center;padding:40px;border:1px dashed var(--border);border-radius:16px;color:var(--muted)}
+  .lb{width:100%;border-collapse:collapse;margin-top:16px}.lb td,.lb th{padding:10px;border-bottom:1px solid var(--border);text-align:right}.lb th{color:var(--accent);font-size:13px}
+  .lb tr.me td{background:rgba(34,211,238,.08)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🎸 GUITAR 3D</div>
+  <div class="authbar" id="authbar"></div>
+  <div class="umenu" id="umenu"></div>
+  <ul>
+    <li><a href="#hero">نمایش سه‌بعدی</a></li>
+    <li><a href="#types">انواع گیتار</a></li>
+    <li><a href="#parts">اجزا</a></li>
+    <li><a href="#history">تاریخچه</a></li>
+    <li><a href="#tuner">تیونر</a></li>
+    <li><a href="#chords">آکوردها</a></li>
+    <li><a href="#metro">مترونوم</a></li>
+    <li><a href="#quiz">آزمون</a></li>
+    <li><a href="#profile">پروفایل</a></li>
+  </ul>
+</nav>
+
+<!-- ============ HERO 3D ============ -->
+<div id="hero">
+  <div class="stage-glow"></div>
+  <div class="hero-text">
+    <h1>دنیای <span>گیتار</span><br>در سه بُعد</h1>
+    <p>گیتار را بچرخانید، رنگش را عوض کنید، سیم‌هایش را بنوازید و همه چیز را درباره محبوب‌ترین ساز جهان بیاموزید.</p>
+    <a class="cta" href="#types">شروع کاوش ↓</a>
+  </div>
+
+  <div class="panel">
+    <h3>⚙️ پیکربندی گیتار</h3>
+    <div class="group">
+      <label>نوع گیتار</label>
+      <div class="btns" id="typeBtns">
+        <button data-t="acoustic" class="active">آکوستیک</button>
+        <button data-t="electric">الکتریک</button>
+        <button data-t="classical">کلاسیک</button>
+        <button data-t="bass">بیس</button>
+      </div>
+    </div>
+    <div class="group">
+      <label>رنگ بدنه</label>
+      <div class="swatches" id="colorSw"></div>
+    </div>
+    <div class="group">
+      <label>جنس چوب / پرداخت</label>
+      <div class="btns" id="finishBtns">
+        <button data-f="gloss" class="active">براق</button>
+        <button data-f="matte">مات</button>
+        <button data-f="metal">متالیک</button>
+        <button data-f="sunburst">سان‌برست</button>
+      </div>
+    </div>
+    <div class="group">
+      <label>محیط / نورپردازی</label>
+      <div class="btns" id="envBtns">
+        <button data-e="studio" class="active">استودیو</button>
+        <button data-e="stage">صحنه کنسرت</button>
+        <button data-e="sunset">غروب</button>
+        <button data-e="neon">نئون</button>
+      </div>
+    </div>
+    <div class="group">
+      <label>شدت نور: <span id="lightVal">0.8</span></label>
+      <input type="range" id="lightRange" min="0.2" max="2" step="0.1" value="0.8">
+    </div>
+    <div class="group">
+      <div class="toggle"><span>چرخش خودکار</span><input type="checkbox" id="autoRot" checked></div>
+      <div class="toggle"><span>حالت سیم‌کشی (Wireframe)</span><input type="checkbox" id="wire"></div>
+      <div class="toggle"><span>نمایش برچسب اجزا</span><input type="checkbox" id="labels"></div>
+      <div class="toggle"><span>حالت انفجاری (Exploded)</span><input type="checkbox" id="explode"></div>
+      <div class="toggle"><span>ذرات پس‌زمینه</span><input type="checkbox" id="particles" checked></div>
+    </div>
+    <div class="group">
+      <label>دوربین</label>
+      <div class="btns">
+        <button data-cam="front">روبرو</button>
+        <button data-cam="side">نیم‌رخ</button>
+        <button data-cam="top">از بالا</button>
+        <button data-cam="close">نمای نزدیک</button>
+      </div>
+    </div>
+    <div class="group">
+      <div class="btns">
+        <button id="strumBtn">🎵 نواختن سیم‌ها</button>
+        <button id="shotBtn">📷 عکس</button>
+        <button id="fsBtn">⛶ تمام‌صفحه</button>
+        <button id="saveCfgBtn">💾 ذخیره گیتار</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="stats">FPS: <span id="fps">--</span> | Faces: <span id="tri">--</span></div>
+  <div class="hint">🖱 درگ برای چرخش · اسکرول برای زوم · روی سیم‌ها کلیک کنید تا صدا بدهند</div>
+</div>
+
+<!-- ============ TYPES ============ -->
+<section id="types">
+  <h2 class="reveal">انواع <span>گیتار</span></h2>
+  <p class="sub reveal">هر گیتار شخصیت صوتی خودش را دارد. با خانواده گیتارها آشنا شوید.</p>
+  <div class="grid">
+    <div class="card reveal"><div class="ic">🎸</div><h4>گیتار آکوستیک</h4><p>با سیم‌های فلزی و بدنه توخالی؛ صدایی درخشان و پرقدرت. مناسب فولک، پاپ و کانتری. جعبه صوتی بزرگ، صدا را بدون نیاز به آمپلی‌فایر تقویت می‌کند.</p></div>
+    <div class="card reveal"><div class="ic">🎼</div><h4>گیتار کلاسیک</h4><p>سیم‌های نایلونی، دسته پهن‌تر و صدایی گرم و نرم. ساز اصلی موسیقی کلاسیک و فلامنکو. برای مبتدیان به دلیل فشار کم سیم‌ها بسیار مناسب است.</p></div>
+    <div class="card reveal"><div class="ic">⚡</div><h4>گیتار الکتریک</h4><p>بدنه توپر و پیکاپ‌های مغناطیسی که ارتعاش سیم را به سیگنال الکتریکی تبدیل می‌کنند. با افکت‌ها و آمپ، صدایی بی‌نهایت متنوع دارد. قلب راک، بلوز و متال.</p></div>
+    <div class="card reveal"><div class="ic">🔊</div><h4>گیتار بیس</h4><p>معمولاً ۴ سیم با کوک یک اکتاو پایین‌تر. ستون فقرات ریتم و هارمونی در هر گروه موسیقی. سیم‌های ضخیم و دسته بلندتر (۳۴ اینچ).</p></div>
+    <div class="card reveal"><div class="ic">🎶</div><h4>گیتار ۱۲ سیم</h4><p>هر سیم یک جفت دارد که صدایی غنی و کُرال‌مانند ایجاد می‌کند. صدای معروف آهنگ‌های Byrds و Led Zeppelin از همین ساز است.</p></div>
+    <div class="card reveal"><div class="ic">🌵</div><h4>گیتار فلامنکو</h4><p>سبک‌تر از کلاسیک، با اکشن پایین و صدایی تیز و کوبنده. صفحه محافظ (Golpeador) برای ضربات انگشت روی بدنه.</p></div>
+  </div>
+</section>
+
+<!-- ============ PARTS ============ -->
+<section id="parts">
+  <h2 class="reveal">آناتومی <span>گیتار</span></h2>
+  <p class="sub reveal">روی هر قطعه کلیک کنید؛ در مدل سه‌بعدی بالا هم هایلایت می‌شود.</p>
+  <div class="parts-wrap">
+    <div class="part-list" id="partList"></div>
+    <div class="part-info" id="partInfo"><h4>یک قطعه را انتخاب کنید</h4><p>توضیحات کامل هر بخش از گیتار اینجا نمایش داده می‌شود.</p></div>
+  </div>
+</section>
+
+<!-- ============ HISTORY ============ -->
+<section id="history">
+  <h2 class="reveal">تاریخچه <span>گیتار</span></h2>
+  <p class="sub reveal">سفری چند هزار ساله از سازهای زهی باستانی تا گیتارهای الکتریک مدرن.</p>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<!-- ============ TUNER ============ -->
+<section id="tuner">
+  <h2 class="reveal">تیونر <span>صوتی</span></h2>
+  <p class="sub reveal">روی هر سیم کلیک کنید تا نت مرجع را بشنوید و گیتارتان را کوک کنید. کوک‌های مختلف را امتحان کنید.</p>
+  <div class="tuning-sel" id="tuningSel"></div>
+  <div class="tuner" id="tunerBox"></div>
+</section>
+
+<!-- ============ CHORDS ============ -->
+<section id="chords">
+  <h2 class="reveal">کتابخانه <span>آکورد</span></h2>
+  <p class="sub reveal">نمودار آکوردهای پایه با انگشت‌گذاری و امکان شنیدن صدا.</p>
+  <div class="chord-nav" id="chordNav"></div>
+  <div class="chord-box">
+    <svg id="chordSvg" width="220" height="260" viewBox="0 0 220 260"></svg>
+    <div class="d"><h4 id="chordName"></h4><p id="chordDesc"></p><button class="play-btn" id="chordPlay">▶ پخش آکورد</button></div>
+  </div>
+</section>
+
+<!-- ============ METRONOME ============ -->
+<section id="metro">
+  <h2 class="reveal">مترونوم</h2>
+  <p class="sub reveal">برای تمرین ریتم؛ سرعت و ضرب‌آهنگ را تنظیم کنید.</p>
+  <div class="metro">
+    <div class="bpm" id="bpmVal">100</div>
+    <div style="flex:1;min-width:220px">
+      <label style="color:var(--muted);font-size:13px">سرعت (BPM)</label>
+      <input type="range" id="bpm" min="40" max="220" value="100">
+      <div class="btns" style="margin-top:12px">
+        <button data-ts="2">۲/۴</button><button data-ts="3">۳/۴</button><button data-ts="4" class="active">۴/۴</button><button data-ts="6">۶/۸</button>
+      </div>
+    </div>
+    <div class="beat" id="beatDots"></div>
+    <div class="eq" id="eq" style="width:120px"></div>
+    <button class="play-btn" id="metroBtn">▶ شروع</button>
+  </div>
+</section>
+
+<!-- ============ QUIZ ============ -->
+<section id="quiz">
+  <h2 class="reveal">آزمون <span>گیتار</span></h2>
+  <p class="sub reveal">دانش خود را محک بزنید!</p>
+  <div class="quiz">
+    <div class="q" id="quizQ"></div>
+    <div class="opts" id="quizOpts"></div>
+    <div class="score" id="quizScore"></div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section id="gallery">
+  <h2 class="reveal">گالری <span>سبک‌ها</span></h2>
+  <p class="sub reveal">روی هر کارت کلیک کنید تا مدل سه‌بعدی به همان سبک تغییر کند.</p>
+  <div class="gal" id="gal"></div>
+</section>
+
+<!-- ============ PROFILE ============ -->
+<section id="profile">
+  <h2 class="reveal">پروفایل <span>من</span></h2>
+  <p class="sub reveal">گیتارهای طراحی‌شده و رکوردهای آزمون شما اینجا ذخیره می‌شود.</p>
+  <div id="profileBox"></div>
+</section>
+
+<div class="modal" id="authModal">
+  <div class="mbox">
+    <button class="x" id="authClose">✕</button>
+    <h3>به <span>Guitar 3D</span> خوش آمدید</h3>
+    <div class="sub2">با حساب کاربری، طرح‌های گیتار و امتیازهایتان ذخیره می‌شود.</div>
+    <div class="tabs"><button class="active" data-tab="login">ورود</button><button data-tab="signup">ثبت‌نام</button></div>
+    <form id="authForm" autocomplete="off">
+      <div class="field" id="fName" style="display:none"><label>نام نمایشی</label><input id="aName" placeholder="مثلاً امیرمحمد"></div>
+      <div class="field"><label>ایمیل</label><input id="aEmail" type="email" placeholder="you@example.com" required></div>
+      <div class="field"><label>رمز عبور</label><input id="aPass" type="password" placeholder="حداقل ۶ کاراکتر" required minlength="6"><div class="strength" id="strength" style="display:none"><i></i></div></div>
+      <div class="field" id="fLevel" style="display:none"><label>سطح نوازندگی</label><select id="aLevel"><option>مبتدی</option><option>متوسط</option><option>پیشرفته</option></select></div>
+      <button class="go" type="submit" id="authGo">ورود</button>
+      <div class="err" id="authErr"></div>
+    </form>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<footer>
+  <div style="font-size:18px;font-weight:800;margin-bottom:8px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent;direction:ltr">Designed & Developed by Amir Mohammad Fallah</div>
+  <div>طراحی و توسعه: امیرمحمد فلاح · © 2026</div>
+  <div style="margin-top:6px">ساخته‌شده با Three.js و Web Audio API · تمام صداها به‌صورت سنتزشده در مرورگر تولید می‌شوند 🎸</div>
+</footer>
+
+<script type="module">
+import * as THREE from './three.module.js';
+import { OrbitControls } from './OrbitControls.js';
+import { RoomEnvironment } from './RoomEnvironment.js';
+import { EffectComposer } from './EffectComposer.js';
+import { RenderPass } from './RenderPass.js';
+import { UnrealBloomPass } from './UnrealBloomPass.js';
+import { OutputPass } from './OutputPass.js';
+
+/* ================= AUDIO (Karplus-Strong string synth) ================= */
+let actx;
+function ac(){ if(!actx) actx = new (window.AudioContext||window.webkitAudioContext)(); if(actx.state==='suspended') actx.resume(); return actx; }
+function pluck(freq, when=0, dur=2.5, gainV=0.5){
+  const c=ac(); const sr=c.sampleRate; const N=Math.round(sr/freq);
+  const len=Math.floor(sr*dur); const buf=c.createBuffer(1,len,sr); const d=buf.getChannelData(0);
+  const ring=new Float32Array(N); for(let i=0;i<N;i++) ring[i]=Math.random()*2-1;
+  let idx=0; const damp = 0.996;
+  for(let i=0;i<len;i++){ const cur=ring[idx]; const nxt=ring[(idx+1)%N]; d[i]=cur; ring[idx]=(cur+nxt)*0.5*damp; idx=(idx+1)%N; }
+  const src=c.createBufferSource(); src.buffer=buf;
+  const g=c.createGain(); g.gain.value=gainV;
+  const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=Math.min(6000,freq*10);
+  src.connect(lp).connect(g).connect(c.destination); src.start(c.currentTime+when);
+}
+function click(acc=false){ const c=ac(); const o=c.createOscillator(); const g=c.createGain(); o.frequency.value=acc?1600:1000; g.gain.setValueAtTime(.6,c.currentTime); g.gain.exponentialRampToValueAtTime(.001,c.currentTime+.08); o.connect(g).connect(c.destination); o.start(); o.stop(c.currentTime+.09); }
+const noteFreq = n => 440*Math.pow(2,(n-69)/12);
+const NOTE_NAMES=['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+const nameOf = m => NOTE_NAMES[m%12]+(Math.floor(m/12)-1);
+
+/* ================= THREE SCENE ================= */
+const hero=document.getElementById('hero');
+const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2.5)); renderer.setSize(innerWidth,innerHeight);
+renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=0.8; renderer.outputColorSpace=THREE.SRGBColorSpace;
+hero.prepend(renderer.domElement);
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0x0b0d12); scene.fog=new THREE.FogExp2(0x0b0d12,0.035);
+// realistic image-based lighting (reflections on lacquer & metal)
+const pmrem=new THREE.PMREMGenerator(renderer); scene.environment=pmrem.fromScene(new RoomEnvironment(renderer),0.04).texture; scene.environmentIntensity=0.55;
+// post-processing: bloom for glow on metal/neon
+const composer=new EffectComposer(renderer); const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),0.08,0.4,0.95);
+let renderPass, outputPass;
+const camera=new THREE.PerspectiveCamera(40,innerWidth/innerHeight,0.1,100); camera.position.set(-3.2,1.2,5.5);
+renderPass=new RenderPass(scene,camera); outputPass=new OutputPass(); composer.addPass(renderPass); composer.addPass(bloom); composer.addPass(outputPass);
+const controls=new OrbitControls(camera,renderer.domElement); controls.enableDamping=true; controls.autoRotate=true; controls.autoRotateSpeed=1.2; controls.minDistance=2; controls.maxDistance=12; controls.target.set(0,0.2,0);
+
+// lights
+const hemi=new THREE.HemisphereLight(0xffffff,0x223344,.25); scene.add(hemi);
+const key=new THREE.DirectionalLight(0xffffff,1.3); key.position.set(4,6,5); key.castShadow=true; key.shadow.mapSize.set(2048,2048); key.shadow.camera.left=-5;key.shadow.camera.right=5;key.shadow.camera.top=5;key.shadow.camera.bottom=-5; scene.add(key);
+const fill=new THREE.DirectionalLight(0x88aaff,.4); fill.position.set(-5,2,-3); scene.add(fill);
+const rim=new THREE.SpotLight(0x22d3ee,1.5,20,Math.PI/5,.5); rim.position.set(0,5,-5); scene.add(rim);
+const p1=new THREE.PointLight(0xff3366,0,20), p2=new THREE.PointLight(0x33ccff,0,20); p1.position.set(-4,2,3); p2.position.set(4,2,-3); scene.add(p1,p2);
+
+// floor
+const floor=new THREE.Mesh(new THREE.CircleGeometry(12,64),new THREE.MeshPhysicalMaterial({color:0x0c0f16,roughness:.5,metalness:.4,clearcoat:.6,clearcoatRoughness:.3}));
+floor.rotation.x=-Math.PI/2; floor.position.y=-2.1; floor.receiveShadow=true; scene.add(floor);
+const gridH=new THREE.GridHelper(24,48,0x222833,0x1a1f29); gridH.position.y=-2.09; scene.add(gridH);
+
+// particles
+const pGeo=new THREE.BufferGeometry(); const pc=1200; const pp=new Float32Array(pc*3);
+for(let i=0;i<pc*3;i++) pp[i]=(Math.random()-.5)*30; pGeo.setAttribute('position',new THREE.BufferAttribute(pp,3));
+const particles=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0x22d3ee,size:.045,transparent:true,opacity:.45,sizeAttenuation:true,blending:THREE.AdditiveBlending,depthWrite:false})); scene.add(particles);
+
+/* ---------- Guitar builder ---------- */
+const guitar=new THREE.Group(); scene.add(guitar);
+const parts={}; let strings=[]; let stringBaseY=[];
+// ---- procedural high-res wood grain textures ----
+function woodTexture(base,dark,rings=28,size=2048,noise=.28){ const c=document.createElement('canvas'); c.width=c.height=size; const g=c.getContext('2d');
+  g.fillStyle=base; g.fillRect(0,0,size,size);
+  for(let i=0;i<rings*6;i++){ const y=i*(size/(rings*6)); const w=Math.random()*3+.5; g.strokeStyle=dark; g.globalAlpha=Math.random()*noise+.05; g.lineWidth=w; g.beginPath(); for(let x=0;x<=size;x+=16){ g.lineTo(x, y+Math.sin(x*.012+i)*6+Math.sin(x*.05+i*3)*2); } g.stroke(); }
+  g.globalAlpha=1; const id=g.getImageData(0,0,size,size); const d=id.data; for(let i=0;i<d.length;i+=4){ const n=(Math.random()-.5)*14; d[i]+=n;d[i+1]+=n;d[i+2]+=n; } g.putImageData(id,0,0);
+  const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.wrapS=t.wrapT=THREE.RepeatWrapping; t.anisotropy=renderer.capabilities.getMaxAnisotropy(); return t; }
+function bumpFrom(tex){ const t=tex.clone(); t.colorSpace=THREE.NoColorSpace; t.needsUpdate=true; return t; }
+const spruceTex=woodTexture('#e6c48e','#c49a5a',70), mahoganyTex=woodTexture('#6b3a1e','#3a1c0a',30), rosewoodTex=woodTexture('#2a1a12','#0e0805',24), mapleTex=woodTexture('#d9b98a','#b08a55',36);
+const bodyMat=new THREE.MeshPhysicalMaterial({color:0xc98a3c,map:spruceTex,bumpMap:bumpFrom(spruceTex),bumpScale:.004,roughness:.35,metalness:.0,clearcoat:.8,clearcoatRoughness:.15,reflectivity:.4});
+const neckMat=new THREE.MeshPhysicalMaterial({color:0xffffff,map:mahoganyTex,bumpMap:bumpFrom(mahoganyTex),bumpScale:.003,roughness:.45,clearcoat:.5,clearcoatRoughness:.3});
+const mapleMat=new THREE.MeshPhysicalMaterial({color:0xffffff,map:mapleTex,roughness:.4,clearcoat:.6});
+const fretMat=new THREE.MeshPhysicalMaterial({color:0xffffff,map:rosewoodTex,bumpMap:bumpFrom(rosewoodTex),bumpScale:.002,roughness:.55});
+const metal=new THREE.MeshPhysicalMaterial({color:0xe8e8ec,roughness:.15,metalness:1,clearcoat:.3});
+const goldMetal=new THREE.MeshPhysicalMaterial({color:0xf0c060,roughness:.2,metalness:1});
+const stringMat=new THREE.MeshPhysicalMaterial({color:0xd8d8dc,roughness:.3,metalness:1});
+const nylonMat=new THREE.MeshStandardMaterial({color:0xfff7dd,roughness:.7,metalness:.1});
+const darkMat=new THREE.MeshStandardMaterial({color:0x111111,roughness:.4});
+const pickMat=new THREE.MeshStandardMaterial({color:0x222222,roughness:.3,metalness:.6});
+
+function bodyShape(type){
+  const s=new THREE.Shape();
+  if(type==='electric'){ // strat-like
+    s.moveTo(0,-1.1); s.bezierCurveTo(.75,-1.15,1.0,-.5,.75,-.1); s.bezierCurveTo(.6,.2,.85,.7,.45,1.05); s.bezierCurveTo(.3,1.15,.15,.9,0,.9);
+    s.bezierCurveTo(-.15,.9,-.25,1.35,-.5,1.25); s.bezierCurveTo(-.85,1.1,-.7,.4,-.6,.1); s.bezierCurveTo(-.85,-.4,-.9,-1.1,0,-1.1);
+  } else if(type==='bass'){
+    s.moveTo(0,-1.2); s.bezierCurveTo(.8,-1.25,1.05,-.5,.7,-.1); s.bezierCurveTo(.55,.2,.9,.6,.5,1.0); s.bezierCurveTo(.3,1.15,.15,.85,0,.85);
+    s.bezierCurveTo(-.2,.85,-.3,1.5,-.6,1.35); s.bezierCurveTo(-.95,1.15,-.7,.4,-.6,.1); s.bezierCurveTo(-.9,-.4,-.95,-1.2,0,-1.2);
+  } else { // acoustic/classical
+    s.moveTo(0,-1.25); s.bezierCurveTo(.95,-1.25,1.0,-.2,.55,.1); s.bezierCurveTo(.35,.3,.4,.6,.55,.75); s.bezierCurveTo(.75,1.05,.35,1.15,0,1.15);
+    s.bezierCurveTo(-.35,1.15,-.75,1.05,-.55,.75); s.bezierCurveTo(-.4,.6,-.35,.3,-.55,.1); s.bezierCurveTo(-1.0,-.2,-.95,-1.25,0,-1.25);
+  }
+  return s;
+}
+function clearGuitar(){ while(guitar.children.length) guitar.remove(guitar.children[0]); for(const k in parts) delete parts[k]; strings=[]; stringBaseY=[]; }
+let currentType='acoustic';
+function headstockShape(type){
+  const s=new THREE.Shape();
+  if(type==='electric'){ // Strat-style 6-in-line
+    s.moveTo(-.16,0); s.lineTo(.16,0); s.bezierCurveTo(.2,-.1,.26,-.2,.24,-.32); s.bezierCurveTo(.22,-.42,.3,-.5,.28,-.58); s.bezierCurveTo(.26,-.66,.16,-.7,.05,-.7);
+    s.bezierCurveTo(-.05,-.7,-.12,-.66,-.14,-.6); s.bezierCurveTo(-.18,-.5,-.2,-.3,-.16,0); return s; }
+  if(type==='bass'){ s.moveTo(-.17,0); s.lineTo(.17,0); s.bezierCurveTo(.22,-.15,.3,-.3,.28,-.5); s.bezierCurveTo(.26,-.7,.3,-.8,.2,-.86); s.bezierCurveTo(.1,-.9,-.1,-.9,-.16,-.8); s.bezierCurveTo(-.22,-.6,-.2,-.3,-.17,0); return s; }
+  if(type==='classical'){ s.moveTo(-.2,0); s.lineTo(.2,0); s.lineTo(.2,-.62); s.bezierCurveTo(.2,-.7,.1,-.72,0,-.66); s.bezierCurveTo(-.1,-.72,-.2,-.7,-.2,-.62); s.lineTo(-.2,0); return s; }
+  // acoustic 3+3 (Martin-ish)
+  s.moveTo(-.17,0); s.lineTo(.17,0); s.lineTo(.19,-.45); s.bezierCurveTo(.19,-.55,.12,-.58,.06,-.58); s.bezierCurveTo(.03,-.55,-.03,-.55,-.06,-.58); s.bezierCurveTo(-.12,-.58,-.19,-.55,-.19,-.45); s.lineTo(-.17,0); return s;
+}
+// realistic tuning machine: housing, worm gear, post, button
+function makeTuner(side, style){
+  const g=new THREE.Group();
+  if(style==='classical'){ // roller + lyre plate + button
+    const plate=new THREE.Mesh(new THREE.BoxGeometry(.03,.14,.34),goldMetal); plate.position.set(side*.2,0,0); g.add(plate);
+    const shaft=new THREE.Mesh(new THREE.CylinderGeometry(.012,.012,.16,16),goldMetal); shaft.rotation.z=Math.PI/2; shaft.position.set(side*.27,0,0); g.add(shaft);
+    const btn=new THREE.Mesh(new THREE.SphereGeometry(.035,24,16),new THREE.MeshPhysicalMaterial({color:0xf3ead2,roughness:.3,clearcoat:1})); btn.scale.set(.6,1,1.4); btn.position.set(side*.37,0,0); g.add(btn);
+    const roller=new THREE.Mesh(new THREE.CylinderGeometry(.03,.03,.16,24),new THREE.MeshPhysicalMaterial({color:0xfaf6e8,roughness:.4})); roller.rotation.z=Math.PI/2; roller.position.set(side*.08,0,0); g.add(roller); g.userData.post=roller;
+    return g; }
+  const housing=new THREE.Mesh(new THREE.BoxGeometry(.05,.07,.09),metal); housing.position.set(side*.1,-.11,0); g.add(housing);
+  const gear=new THREE.Mesh(new THREE.CylinderGeometry(.035,.035,.03,32),metal); gear.position.set(side*.1,-.11,0); gear.rotation.z=Math.PI/2; g.add(gear);
+  const worm=new THREE.Mesh(new THREE.CylinderGeometry(.01,.01,.12,16),metal); worm.rotation.z=Math.PI/2; worm.position.set(side*.17,-.11,0); g.add(worm);
+  const btn=new THREE.Mesh(new THREE.SphereGeometry(.036,24,16),metal); btn.scale.set(.55,1,1.5); btn.position.set(side*.25,-.11,0); g.add(btn);
+  const post=new THREE.Mesh(new THREE.CylinderGeometry(.018,.018,.14,24),metal); post.position.set(0,.05,0); g.add(post); g.userData.post=post;
+  const bush=new THREE.Mesh(new THREE.CylinderGeometry(.03,.03,.02,24),metal); bush.position.set(0,.01,0); g.add(bush);
+  const hole=new THREE.Mesh(new THREE.CylinderGeometry(.02,.02,.012,16),darkMat); hole.rotation.x=Math.PI/2; hole.position.set(0,.09,0); g.add(hole);
+  g.userData.postX=0; return g;
+}
+function buildGuitar(type){
+  clearGuitar(); currentType=type;
+  const isE = type==='electric'||type==='bass';
+  const nStr = type==='bass'?4:6;
+  const scaleLen = type==='bass'?3.0:2.6;
+  const depth = isE?.22:.5;
+  const fbW = type==='classical'?.36:(type==='bass'?.28:.3);
+  // ---- body ----
+  const bodyGeo=new THREE.ExtrudeGeometry(bodyShape(type),{depth,bevelEnabled:true,bevelThickness:isE?.07:.035,bevelSize:isE?.07:.035,bevelSegments:16,curveSegments:160});
+  bodyGeo.center(); bodyGeo.rotateX(-Math.PI/2);
+  const body=new THREE.Mesh(bodyGeo,bodyMat); body.castShadow=body.receiveShadow=true; body.position.y=-1.0; guitar.add(body); parts.body=body;
+  const topY = body.position.y + depth/2 + (isE?.07:.035);
+  if(!isE){ const pts=bodyShape(type).getPoints(160).map(v=>new THREE.Vector3(v.x,0,-v.y)); const curve=new THREE.CatmullRomCurve3(pts,true);
+    const bind=new THREE.Mesh(new THREE.TubeGeometry(curve,600,.012,16,true),new THREE.MeshPhysicalMaterial({color:0xf3ead2,roughness:.35,clearcoat:.8})); bind.position.set(0,topY-.012,0); guitar.add(bind);
+    const bind2=bind.clone(); bind2.position.y=body.position.y-depth/2+.012; guitar.add(bind2); }
+  // ---- soundhole / pickups ----
+  if(!isE){
+    const hole=new THREE.Mesh(new THREE.CylinderGeometry(.22,.22,.08,96),darkMat); hole.position.set(0,topY-.03,-.35); guitar.add(hole); parts.soundhole=hole;
+    const rosMat=new THREE.MeshStandardMaterial({color:0x1a1008,roughness:.5,side:THREE.DoubleSide});
+    for(const [a,b,c] of [[.225,.245,0x111111],[.25,.29,0x3b2a14],[.295,.31,0x111111]]){ const r=new THREE.Mesh(new THREE.RingGeometry(a,b,128),new THREE.MeshStandardMaterial({color:c,roughness:.5,side:THREE.DoubleSide})); r.rotation.x=-Math.PI/2; r.position.set(0,topY+.002,-.35); guitar.add(r); }
+    if(type==='acoustic'){ const pgS=new THREE.Shape(); pgS.moveTo(.3,.75); pgS.bezierCurveTo(.6,.7,.7,.35,.6,.1); pgS.bezierCurveTo(.5,-.05,.36,.05,.32,.2); pgS.bezierCurveTo(.3,.4,.24,.6,.3,.75);
+      const pg=new THREE.Mesh(new THREE.ShapeGeometry(pgS,32),new THREE.MeshPhysicalMaterial({color:0x1a1210,roughness:.3,clearcoat:.8,side:THREE.DoubleSide})); pg.rotation.x=-Math.PI/2; pg.position.set(0,topY+.003,0); guitar.add(pg); parts.pickguard=pg; }
+  } else {
+    const pgS=new THREE.Shape();
+    if(type==='electric'){ pgS.moveTo(-.2,-1.0); pgS.bezierCurveTo(.3,-1.05,.55,-.7,.5,-.3); pgS.bezierCurveTo(.48,0,.55,.4,.35,.75); pgS.bezierCurveTo(.2,.9,-.05,.6,-.2,.75); pgS.bezierCurveTo(-.5,.9,-.6,.5,-.55,.2); pgS.bezierCurveTo(-.5,-.2,-.6,-.7,-.2,-1.0); }
+    else { pgS.moveTo(-.55,-1.0); pgS.bezierCurveTo(.1,-1.1,.5,-.6,.35,-.1); pgS.bezierCurveTo(.3,.2,.25,.5,.1,.8); pgS.bezierCurveTo(-.2,.9,-.45,.7,-.5,.3); pgS.bezierCurveTo(-.55,-.2,-.65,-.6,-.55,-1.0); }
+    const pgMat=new THREE.MeshPhysicalMaterial({color:type==='bass'?0x111111:0xf4f1e6,roughness:.25,clearcoat:.9,side:THREE.DoubleSide});
+    const pg=new THREE.Mesh(new THREE.ExtrudeGeometry(pgS,{depth:.012,bevelEnabled:false,curveSegments:64}),pgMat); pg.rotation.x=-Math.PI/2; pg.position.set(0,topY+.001,0); guitar.add(pg); parts.pickguard=pg;
+    // screws on pickguard
+    const scrM=metal; const spts=pgS.getSpacedPoints(11); spts.forEach(pt=>{ const sc=new THREE.Mesh(new THREE.CylinderGeometry(.012,.012,.006,12),scrM); sc.position.set(pt.x*.94,topY+.016,-pt.y*.94); guitar.add(sc); });
+    // pickups
+    const pkG=new THREE.Group();
+    if(type==='electric'){ // 3 single coils, angled bridge pickup
+      for(let i=0;i<3;i++){ const cover=new THREE.Mesh(new THREE.BoxGeometry(.22,.05,.75),new THREE.MeshPhysicalMaterial({color:0xf4f1e6,roughness:.35})); cover.geometry.rotateY(Math.PI/2); const pu=new THREE.Group(); pu.add(cover);
+        for(let j=0;j<6;j++){ const pole=new THREE.Mesh(new THREE.CylinderGeometry(.016,.016,.02,16),metal); pole.position.set(-.26+j*.104,.03,0); pu.add(pole); }
+        for(const dx of [-.42,.42]){ const sc=new THREE.Mesh(new THREE.CylinderGeometry(.012,.012,.008,12),metal); sc.position.set(dx,.028,0); pu.add(sc); }
+        pu.position.set(0,topY+.035,-.45+i*.4); if(i===2) pu.rotation.y=.12; pkG.add(pu); } }
+    else { // bass: split P-style + J bridge
+      for(let i=0;i<2;i++){ const cover=new THREE.Mesh(new THREE.BoxGeometry(.5,.06,.2),pickMat); cover.position.set(i?0:-.15,topY+.04,-.25+i*.5); pkG.add(cover);
+        for(let j=0;j<4;j++){ const pole=new THREE.Mesh(new THREE.CylinderGeometry(.02,.02,.02,16),metal); pole.position.set((i?0:-.15)-.18+j*.12,topY+.075,-.25+i*.5); pkG.add(pole);} }
+    }
+    guitar.add(pkG); parts.pickups=pkG;
+    // knobs + selector + jack
+    const knobs=new THREE.Group(); const knobMat=new THREE.MeshPhysicalMaterial({color:type==='bass'?0x222222:0xf4f1e6,roughness:.3,clearcoat:.8});
+    const kpos=type==='electric'?[[.62,-.05],[.66,.22],[.62,.47]]:[[.45,.35],[.6,.55]];
+    kpos.forEach(([x,z])=>{ const k=new THREE.Mesh(new THREE.CylinderGeometry(.07,.08,.08,48),knobMat); k.position.set(x,topY+.04,z); knobs.add(k); const top=new THREE.Mesh(new THREE.CylinderGeometry(.05,.07,.02,48),knobMat); top.position.set(x,topY+.09,z); knobs.add(top);
+      for(let r=0;r<24;r++){ const rib=new THREE.Mesh(new THREE.BoxGeometry(.008,.07,.008),darkMat); rib.position.set(x+Math.cos(r/24*Math.PI*2)*.077,topY+.04,z+Math.sin(r/24*Math.PI*2)*.077); rib.rotation.y=-r/24*Math.PI*2; knobs.add(rib);} });
+    if(type==='electric'){ const sel=new THREE.Mesh(new THREE.BoxGeometry(.025,.1,.05),new THREE.MeshPhysicalMaterial({color:0xf4f1e6})); sel.position.set(.42,topY+.05,-.15); sel.rotation.y=.5; knobs.add(sel); const slot=new THREE.Mesh(new THREE.BoxGeometry(.06,.006,.3),darkMat); slot.position.set(.42,topY+.014,-.05); slot.rotation.y=.5; knobs.add(slot); }
+    guitar.add(knobs); parts.knobs=knobs;
+    const jack=new THREE.Mesh(new THREE.CylinderGeometry(.05,.05,.04,24),metal); jack.rotation.z=Math.PI/2; jack.position.set(.95,body.position.y,-.3); guitar.add(jack);
+    // strap buttons
+    [[0,-1.15],[-.5,1.3]].forEach(([x,z])=>{ const sb=new THREE.Mesh(new THREE.CylinderGeometry(.03,.022,.04,16),metal); sb.position.set(x,body.position.y,z); sb.rotation.x=z>0?-Math.PI/2:Math.PI/2; guitar.add(sb); });
+  }
+  // ---- bridge ----
+  const bridgeZ=.5; const bridgeG=new THREE.Group();
+  if(!isE){ // wooden bridge with saddle & pins
+    const bs=new THREE.Shape(); bs.moveTo(-.42,-.09); bs.lineTo(.42,-.09); bs.bezierCurveTo(.5,-.09,.5,.09,.42,.09); bs.lineTo(.25,.09); bs.lineTo(.25,.13); bs.lineTo(-.25,.13); bs.lineTo(-.25,.09); bs.lineTo(-.42,.09); bs.bezierCurveTo(-.5,.09,-.5,-.09,-.42,-.09);
+    const wood=new THREE.Mesh(new THREE.ExtrudeGeometry(bs,{depth:.05,bevelEnabled:true,bevelSize:.01,bevelThickness:.01,bevelSegments:3}),fretMat); wood.rotation.x=-Math.PI/2; wood.position.set(0,topY,bridgeZ); bridgeG.add(wood);
+    const saddle=new THREE.Mesh(new THREE.BoxGeometry(.5,.05,.02),new THREE.MeshPhysicalMaterial({color:0xfaf6e8,roughness:.4})); saddle.position.set(0,topY+.07,bridgeZ-.02); saddle.rotation.y=.03; bridgeG.add(saddle);
+    for(let i=0;i<6;i++){ const pin=new THREE.Mesh(new THREE.SphereGeometry(.018,16,12),new THREE.MeshPhysicalMaterial({color:0x111111,roughness:.3,clearcoat:1})); pin.position.set(-.16+i*.064,topY+.065,bridgeZ+.07); bridgeG.add(pin); const dot=new THREE.Mesh(new THREE.CircleGeometry(.007,12),new THREE.MeshStandardMaterial({color:0xffffff})); dot.rotation.x=-Math.PI/2; dot.position.set(-.16+i*.064,topY+.084,bridgeZ+.07); bridgeG.add(dot); }
+    if(type==='classical'){ const tie=new THREE.Mesh(new THREE.BoxGeometry(.5,.04,.08),fretMat); tie.position.set(0,topY+.06,bridgeZ+.07); bridgeG.add(tie); const bone=new THREE.Mesh(new THREE.BoxGeometry(.5,.012,.08),new THREE.MeshStandardMaterial({color:0xfaf6e8})); bone.position.set(0,topY+.085,bridgeZ+.07); bridgeG.add(bone); }
+  } else { // tremolo/bass bridge plate with individual saddles
+    const plate=new THREE.Mesh(new THREE.BoxGeometry(.56,.02,type==='bass'?.34:.3),metal); plate.position.set(0,topY+.01,bridgeZ); bridgeG.add(plate);
+    const sw=(type==='bass'?.4:.42)/(nStr-1);
+    for(let i=0;i<nStr;i++){ const x=-(type==='bass'?.2:.21)+i*sw; const sad=new THREE.Mesh(new THREE.BoxGeometry(sw*.85,.045,.1),metal); sad.position.set(x,topY+.045,bridgeZ-.03-i*.006); bridgeG.add(sad);
+      const scr=new THREE.Mesh(new THREE.CylinderGeometry(.008,.008,.12,10),metal); scr.rotation.x=Math.PI/2; scr.position.set(x,topY+.05,bridgeZ+.04); bridgeG.add(scr);
+      for(const dx of[-sw*.28,sw*.28]){ const h=new THREE.Mesh(new THREE.CylinderGeometry(.008,.008,.06,10),metal); h.position.set(x+dx,topY+.06,bridgeZ-.05); bridgeG.add(h);} }
+    if(type==='electric'){ const arm=new THREE.Mesh(new THREE.CylinderGeometry(.012,.012,.55,12),metal); arm.position.set(.32,topY+.1,bridgeZ-.2); arm.rotation.x=-Math.PI/2.4; arm.rotation.z=.25; bridgeG.add(arm); const tip=new THREE.Mesh(new THREE.CylinderGeometry(.016,.016,.12,12),new THREE.MeshPhysicalMaterial({color:0xf4f1e6})); tip.position.set(.4,topY+.2,bridgeZ-.44); tip.rotation.x=-Math.PI/2.4; tip.rotation.z=.25; bridgeG.add(tip); }
+  }
+  guitar.add(bridgeG); parts.bridge=bridgeG;
+  const saddleY = isE? topY+.09 : topY+.095;
+  // ---- neck ----
+  const neckLen=scaleLen*.74; const neckZ0=-0.9; const neckZc=neckZ0-neckLen/2+.3; const nutZ=neckZc-neckLen/2;
+  const neckGeo=new THREE.CylinderGeometry(1,1,neckLen,64,1,false,-Math.PI/2,Math.PI); neckGeo.rotateX(Math.PI/2); neckGeo.scale(fbW/2,.1,1);
+  const neck=new THREE.Mesh(neckGeo,neckMat); neck.castShadow=true; neck.position.set(0,topY+.04,neckZc); guitar.add(neck); parts.neck=neck;
+  // heel
+  const heelGeo=new THREE.CylinderGeometry(1,1,.35,32,1,false,-Math.PI/2,Math.PI); heelGeo.rotateX(Math.PI/2); heelGeo.scale(fbW/2,isE?.12:.3,1); const heel=new THREE.Mesh(heelGeo,neckMat); heel.position.set(0,topY+.04,neckZ0+.12); guitar.add(heel);
+  // fretboard (slightly radiused)
+  const fbGeo=new THREE.CylinderGeometry(1,1,neckLen,48,1,false,Math.PI/2,Math.PI); fbGeo.rotateX(Math.PI/2); fbGeo.scale(fbW/2,type==='classical'?.012:.03,1); const fbBase=new THREE.BoxGeometry(fbW,.02,neckLen); fbBase.translate(0,-.01,0);
+  const fb=new THREE.Mesh(fbGeo,fretMat); fb.position.set(0,topY+.06,neckZc); guitar.add(fb); parts.fretboard=fb; const fbB=new THREE.Mesh(fbBase,fretMat); fbB.position.copy(fb.position); guitar.add(fbB);
+  const fbTop=topY+.06+(type==='classical'?.012:.03);
+  // frets
+  const frets=new THREE.Group(); const nFrets=type==='classical'?19:(type==='bass'?20:22); const inlayMat=new THREE.MeshPhysicalMaterial({color:0xf8f5ec,roughness:.3,clearcoat:1});
+  const fretZ=i=>bridgeZ-(bridgeZ-nutZ)/Math.pow(2,i/12);
+  for(let i=1;i<=nFrets;i++){ const z=fretZ(i); if(z<nutZ)break; const f=new THREE.Mesh(new THREE.CylinderGeometry(.011,.011,fbW,16),metal); f.rotation.z=Math.PI/2; f.position.set(0,fbTop,z); frets.add(f);
+    const zm=(z+fretZ(i-1))/2;
+    if([3,5,7,9,15,17,19,21].includes(i)&&type!=='classical'){ const d=new THREE.Mesh(new THREE.CircleGeometry(.022,32),inlayMat); d.rotation.x=-Math.PI/2; d.position.set(0,fbTop+.001,zm); frets.add(d); }
+    if(i===12&&type!=='classical'){ for(const dx of[-.07,.07]){ const d=new THREE.Mesh(new THREE.CircleGeometry(.022,32),inlayMat); d.rotation.x=-Math.PI/2; d.position.set(dx,fbTop+.001,zm); frets.add(d);} }
+    if([3,5,7,9,12,15,17].includes(i)){ const sd=new THREE.Mesh(new THREE.SphereGeometry(.009,12,8),inlayMat); sd.position.set(-fbW/2-.002,fbTop-.015,zm); frets.add(sd); } }
+  guitar.add(frets); parts.frets=frets;
+  // nut
+  const nut=new THREE.Mesh(new THREE.BoxGeometry(fbW,.045,.04),new THREE.MeshPhysicalMaterial({color:0xfaf6e8,roughness:.35,clearcoat:.5})); nut.position.set(0,fbTop+.005,nutZ+.02); guitar.add(nut); parts.nut=nut;
+  const nutY=fbTop+.032;
+  // ---- headstock ----
+  const hsG=new THREE.Group(); const hsAngle=isE?0.0:0.24; const hsThk=.07;
+  const hsGeo=new THREE.ExtrudeGeometry(headstockShape(type),{depth:hsThk,bevelEnabled:true,bevelSize:.006,bevelThickness:.006,bevelSegments:3,curveSegments:48}); hsGeo.rotateX(Math.PI/2); hsGeo.translate(0,hsThk,0);
+  const hs=new THREE.Mesh(hsGeo,neckMat); hs.castShadow=true; hsG.add(hs);
+  // headstock face veneer (dark) + logo plate
+  const face=new THREE.Mesh(new THREE.ExtrudeGeometry(headstockShape(type),{depth:.004,bevelEnabled:false,curveSegments:48}),type==='electric'?mapleMat:fretMat); face.geometry.rotateX(Math.PI/2); face.position.y=hsThk+.004; face.scale.set(.96,1,.97); hsG.add(face);
+  if(type==='classical'){ for(const sx of[-.09,.09]){ const slot=new THREE.Mesh(new THREE.BoxGeometry(.08,hsThk+.02,.42),new THREE.MeshBasicMaterial({color:0x000000})); slot.position.set(sx,hsThk/2,-.35); hsG.add(slot); } }
+  // volute/transition
+  hsG.position.set(0,nutY-.05,nutZ-.01); hsG.rotation.x=hsAngle; guitar.add(hsG); parts.headstock=hsG;
+  // ---- tuners (in headstock local space) ----
+  const tun=new THREE.Group(); const tunerPos=[];
+  for(let i=0;i<nStr;i++){
+    let px,pz,side;
+    if(type==='electric'||type==='bass'){ side=-1; px=-.05; pz=-.1-i*((type==='bass'?.8:.6)-.12)/(nStr-1); }
+    else if(type==='classical'){ side=i<3?-1:1; px=side*.09; pz=-.2-(i%3)*.13; }
+    else { side=i<3?-1:1; px=side*.1; pz=-.1-(i%3)*.15; }
+    const t=makeTuner(side,type==='classical'?'classical':'std'); t.position.set(px,type==='classical'?hsThk/2:hsThk+.004,pz); tun.add(t); tunerPos.push(t);
+  }
+  hsG.add(tun); parts.tuners=tun;
+  // string trees for strat
+  if(type==='electric'){ for(const pz of[-.3,-.5]){ const tree=new THREE.Mesh(new THREE.CylinderGeometry(.018,.018,.03,12),metal); tree.position.set(.06,hsThk+.02,pz); hsG.add(tree);} }
+  // ---- strings (nut->saddle straight, plus nut->tuner post segment) ----
+  const sGroup=new THREE.Group(); const w=fbW-.07;
+  guitar.updateMatrixWorld(true);
+  for(let i=0;i<nStr;i++){ const x=-w/2+i*(w/(nStr-1)); const r=type==='bass'?.011-i*.0018:(type==='classical'?.007:.0045+(nStr-1-i)*.0012);
+    const mat=(type==='classical'&&i>=3)?nylonMat:stringMat;
+    const a=new THREE.Vector3(x,nutY,nutZ), b=new THREE.Vector3(x*1.15,saddleY,bridgeZ-.02);
+    const len=a.distanceTo(b); const s=new THREE.Mesh(new THREE.CylinderGeometry(r,r,len,16),mat); s.position.copy(a).lerp(b,.5); s.lookAt(b); s.rotateX(Math.PI/2); s.userData.idx=i; s.userData.vib=0; sGroup.add(s); strings.push(s); stringBaseY.push(s.position.y);
+    // headstock segment to post
+    const postW=new THREE.Vector3(); tunerPos[i].userData.post.getWorldPosition(postW); postW.y+= type==='classical'?0:.03; guitar.worldToLocal(postW); const len2=a.distanceTo(postW); const s2=new THREE.Mesh(new THREE.CylinderGeometry(r,r,len2,10),mat); s2.position.copy(a).lerp(postW,.5); s2.lookAt(postW); s2.rotateX(Math.PI/2); sGroup.add(s2);
+    // string end past bridge (acoustic goes into pins; electric into saddle)
+    if(!isE){ const c=new THREE.Vector3(-.16+i*.064,topY+.09,bridgeZ+.07); const l3=b.distanceTo(c); const s3=new THREE.Mesh(new THREE.CylinderGeometry(r,r,l3,10),mat); s3.position.copy(b).lerp(c,.5); s3.lookAt(c); s3.rotateX(Math.PI/2); sGroup.add(s3); }
+  }
+  guitar.add(sGroup); parts.strings=sGroup;
+  guitar.rotation.set(0,0,0); guitar.position.y=.3;
+  applyFinish(currentFinish); applyWire(); applyExplode(); updateTri();
+  parts._explodeBase={}; for(const k in parts){ if(k[0]!=='_') parts._explodeBase[k]=parts[k].position.clone(); }
+}
+
+/* ---------- finish / color ---------- */
+const COLORS=[0xc98a3c,0x2b1a10,0xb8262b,0x1c4fa1,0x1e8a4c,0xf5f0e6,0x111111,0xd4a017,0x7a2d8e,0x0f172a];
+let currentFinish='gloss';
+function applyFinish(f){ currentFinish=f; const wood=!(currentType==='electric'||currentType==='bass'); bodyMat.map=wood?spruceTex:null; bodyMat.bumpMap=wood?bumpFrom(spruceTex):null; bodyMat.metalness=0; bodyMat.roughness=.35; bodyMat.clearcoat=.8; bodyMat.clearcoatRoughness=.15;
+  if(f==='matte'){bodyMat.roughness=.8;bodyMat.clearcoat=0;} if(f==='metal'){bodyMat.map=null;bodyMat.bumpMap=null;bodyMat.metalness=.95;bodyMat.roughness=.12;bodyMat.clearcoat=1;}
+  if(f==='sunburst'){ const c=document.createElement('canvas'); c.width=c.height=1024; const g=c.getContext('2d'); const gr=g.createRadialGradient(512,512,120,512,512,620); gr.addColorStop(0,'rgba(246,199,106,0)'); gr.addColorStop(.55,'rgba(184,70,30,.75)'); gr.addColorStop(1,'rgba(20,8,4,.98)'); g.drawImage(spruceTex.image,0,0,1024,1024); g.fillStyle=gr; g.fillRect(0,0,1024,1024); const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=renderer.capabilities.getMaxAnisotropy(); bodyMat.map=t; bodyMat.color.set(0xffffff); }
+  else bodyMat.color.set(currentColor); bodyMat.needsUpdate=true; }
+let currentColor=COLORS[0];
+const sw=document.getElementById('colorSw'); COLORS.forEach((c,i)=>{const d=document.createElement('div'); d.className='sw'+(i===0?' active':''); d.style.background='#'+c.toString(16).padStart(6,'0'); d.onclick=()=>{currentColor=c; document.querySelectorAll('.sw').forEach(x=>x.classList.remove('active')); d.classList.add('active'); if(currentFinish==='sunburst'){currentFinish='gloss';setActive('#finishBtns','f','gloss');} applyFinish(currentFinish);}; sw.appendChild(d);});
+function setActive(sel,attr,val){ document.querySelectorAll(sel+' button').forEach(b=>b.classList.toggle('active',b.dataset[attr]===val)); }
+document.querySelectorAll('#finishBtns button').forEach(b=>b.onclick=()=>{setActive('#finishBtns','f',b.dataset.f);applyFinish(b.dataset.f);});
+document.querySelectorAll('#typeBtns button').forEach(b=>b.onclick=()=>{setActive('#typeBtns','t',b.dataset.t);buildGuitar(b.dataset.t);});
+
+/* ---------- env ---------- */
+function setEnv(e){ p1.intensity=p2.intensity=0; rim.color.set(0x22d3ee); rim.intensity=1.5; key.color.set(0xffffff); fill.color.set(0x88aaff); particles.material.color.set(0x22d3ee);
+  let bg=0x0b0d12;
+  if(e==='stage'){bg=0x05030a; p1.intensity=10; p2.intensity=10; rim.intensity=4; particles.material.color.set(0xff3366);} 
+  if(e==='sunset'){bg=0x2a1218; key.color.set(0xffb07a); fill.color.set(0x7a4bff); rim.color.set(0xff6b3a); particles.material.color.set(0xffb07a);} 
+  if(e==='neon'){bg=0x02040a; key.color.set(0x00ffe0); fill.color.set(0xff00c8); rim.color.set(0x8a2be2); rim.intensity=5; p1.color.set(0xff00c8); p2.color.set(0x00ffe0); p1.intensity=7; p2.intensity=7; particles.material.color.set(0x00ffe0);} 
+  bloom.strength = e==='neon'?.35 : e==='stage'?.25 : e==='sunset'?.15 : .08; bloom.threshold = e==='neon'?.8:.95;
+  scene.background.set(bg); scene.fog.color.set(bg); }
+document.querySelectorAll('#envBtns button').forEach(b=>b.onclick=()=>{setActive('#envBtns','e',b.dataset.e);setEnv(b.dataset.e);});
+document.getElementById('lightRange').oninput=e=>{const v=+e.target.value; document.getElementById('lightVal').textContent=v.toFixed(1); renderer.toneMappingExposure=v;};
+document.getElementById('autoRot').onchange=e=>controls.autoRotate=e.target.checked;
+document.getElementById('particles').onchange=e=>particles.visible=e.target.checked;
+function applyWire(){ const w=document.getElementById('wire').checked; guitar.traverse(o=>{if(o.isMesh) o.material.wireframe=w;}); }
+document.getElementById('wire').onchange=applyWire;
+function applyExplode(){ const on=document.getElementById('explode').checked; parts._targetExplode = on?1:0; }
+document.getElementById('explode').onchange=applyExplode;
+let explodeT=0;
+const EXPLODE_OFF={neck:[0,.6,0],fretboard:[0,.9,0],frets:[0,1.1,0],strings:[0,1.5,0],headstock:[0,.6,-.4],tuners:[0,.35,0],nut:[0,.9,0],bridge:[0,.7,.3],pickups:[0,.5,0],pickguard:[0,.35,0],knobs:[0,.5,.2],soundhole:[0,.3,0]};
+function tickExplode(dt){ const tgt=parts._targetExplode||0; explodeT+=(tgt-explodeT)*Math.min(1,dt*4); if(!parts._explodeBase)return; for(const k in EXPLODE_OFF){ if(parts[k]&&parts._explodeBase[k]){ const b=parts._explodeBase[k]; const o=EXPLODE_OFF[k]; parts[k].position.set(b.x+o[0]*explodeT,b.y+o[1]*explodeT,b.z+o[2]*explodeT);} } }
+
+// camera presets
+const camTargets={front:[0,.5,7],side:[7,.5,0],top:[0,8,.01],close:[-1.2,1.0,1.8]}; let camAnim=null;
+document.querySelectorAll('[data-cam]').forEach(b=>b.onclick=()=>{camAnim={from:camera.position.clone(),to:new THREE.Vector3(...camTargets[b.dataset.cam]),t:0}; controls.autoRotate=false; document.getElementById('autoRot').checked=false;});
+
+// labels (CSS overlay)
+const labelDefs={headstock:'سر گیتار',tuners:'گوشی‌ها',nut:'شیطانک',fretboard:'صفحه انگشت‌گذاری',frets:'فرت‌ها',body:'بدنه',soundhole:'دهانه صوتی',bridge:'خرک',pickups:'پیکاپ‌ها',strings:'سیم‌ها',pickguard:'صفحه محافظ',knobs:'ولوم و تُن',neck:'دسته'};
+const labelLayer=document.createElement('div'); labelLayer.style.cssText='position:absolute;inset:0;pointer-events:none;'; hero.appendChild(labelLayer);
+const labelEls={}; for(const k in labelDefs){ const el=document.createElement('div'); el.textContent=labelDefs[k]; el.style.cssText='position:absolute;transform:translate(-50%,-50%);background:rgba(0,0,0,.7);color:#22d3ee;padding:3px 9px;border-radius:12px;font-size:11px;border:1px solid rgba(34,211,238,.5);display:none;white-space:nowrap'; labelLayer.appendChild(el); labelEls[k]=el; }
+function updateLabels(){ const on=document.getElementById('labels').checked; const v=new THREE.Vector3(); for(const k in labelEls){ const p=parts[k]; if(!on||!p){labelEls[k].style.display='none';continue;} new THREE.Box3().setFromObject(p).getCenter(v); v.project(camera); labelEls[k].style.display='block'; labelEls[k].style.left=(v.x*.5+.5)*innerWidth+'px'; labelEls[k].style.top=(-v.y*.5+.5)*innerHeight+'px'; } }
+
+// highlight part
+let hl=null,hlMats=[];
+function highlight(k){ if(hl){ hl.traverse(o=>{if(o.isMesh&&o.userData._m){o.material=o.userData._m;delete o.userData._m;}}); } hl=parts[k]; if(!hl)return; const m=new THREE.MeshStandardMaterial({color:0x22d3ee,emissive:0x22d3ee,emissiveIntensity:.6}); hl.traverse(o=>{if(o.isMesh){o.userData._m=o.material;o.material=m;}}); setTimeout(()=>{ if(hl===parts[k]) highlight(null); },2500); }
+
+// strum & raycast
+const openMidi={acoustic:[40,45,50,55,59,64],classical:[40,45,50,55,59,64],electric:[40,45,50,55,59,64],bass:[28,33,38,43]};
+let strumString=function(i,when=0){ const s=strings[i]; if(!s)return; s.userData.vib=1; const m=openMidi[currentType][i]; pluck(noteFreq(m),when,currentType==='bass'?3:2.5,.45); }
+document.getElementById('strumBtn').onclick=()=>{ strings.forEach((s,i)=>setTimeout(()=>strumString(i),i*60)); };
+const ray=new THREE.Raycaster(); const mouse=new THREE.Vector2(); let down=null;
+renderer.domElement.addEventListener('pointerdown',e=>down=[e.clientX,e.clientY]);
+renderer.domElement.addEventListener('pointerup',e=>{ if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>5)return; mouse.set(e.clientX/innerWidth*2-1,-(e.clientY/innerHeight)*2+1); ray.setFromCamera(mouse,camera); ray.params.Line.threshold=.05; const hits=ray.intersectObjects(strings); if(hits.length) strumString(hits[0].object.userData.idx); else { const h2=ray.intersectObjects(guitar.children,true); if(h2.length){ for(const k in parts){ let f=false; parts[k].traverse&&parts[k].traverse(o=>{if(o===h2[0].object)f=true;}); if(f){ showPart(k); break; } } } } });
+document.getElementById('shotBtn').onclick=()=>{ const a=document.createElement('a'); a.download='guitar3d.png'; a.href=renderer.domElement.toDataURL('image/png'); a.click(); };
+document.getElementById('fsBtn').onclick=()=>{ hero.requestFullscreen?.(); };
+
+function updateTri(){ let t=0; scene.traverse(o=>{if(o.isMesh){const g=o.geometry; t+= g.index? g.index.count/3 : g.attributes.position.count/3;}}); document.getElementById('tri').textContent=Math.round(t).toLocaleString('en'); }
+
+// loop
+const clock=new THREE.Clock(); let frames=0,fpsT=0;
+function loop(){ requestAnimationFrame(loop); const dt=clock.getDelta(); const t=clock.elapsedTime;
+  frames++; fpsT+=dt; if(fpsT>=1){document.getElementById('fps').textContent=frames;frames=0;fpsT=0;}
+  if(camAnim){ camAnim.t=Math.min(1,camAnim.t+dt*1.5); const e=1-Math.pow(1-camAnim.t,3); camera.position.lerpVectors(camAnim.from,camAnim.to,e); if(camAnim.t>=1)camAnim=null; }
+  strings.forEach((s,i)=>{ if(s.userData.vib>0.001){ s.position.y=stringBaseY[i]+Math.sin(t*90+i)*0.02*s.userData.vib; s.scale.x=s.scale.z=1+s.userData.vib*1.5; s.userData.vib*=Math.pow(0.15,dt);} else {s.position.y=stringBaseY[i];s.scale.x=s.scale.z=1;} });
+  guitar.position.y=.3+Math.sin(t*.8)*.05;
+  particles.rotation.y=t*.02; rim.position.x=Math.sin(t*.5)*4;
+  tickExplode(dt); controls.update(); composer.render(); updateLabels(); }
+buildGuitar('acoustic'); setEnv('studio'); loop();
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);composer.setSize(innerWidth,innerHeight);});
+
+/* ================= PARTS SECTION ================= */
+const PARTS=[
+ ['headstock','سر گیتار (Headstock)','بالاترین بخش گیتار که گوشی‌های کوک روی آن نصب شده‌اند. شکل هدستاک یکی از عناصر هویتی هر برند است؛ مثلاً هدستاک ۶-در-یک-ردیف فندر یا ۳+۳ گیبسون.'],
+ ['tuners','گوشی‌های کوک (Tuning Machines)','مکانیزم چرخ‌دنده‌ای که با چرخاندن آن کشش سیم و در نتیجه زیر و بمی صدا تغییر می‌کند. نسبت دنده معمولاً ۱۴:۱ تا ۱۸:۱ است.'],
+ ['nut','شیطانک (Nut)','قطعه‌ای کوچک از استخوان، پلاستیک یا گرافیت که سیم‌ها را در ابتدای دسته با فاصله دقیق نگه می‌دارد و یکی از دو نقطه پایان طول مرتعش سیم است.'],
+ ['neck','دسته (Neck)','بخش بلند و باریکی که دست چپ نوازنده روی آن حرکت می‌کند. داخل آن معمولاً یک میله فلزی (Truss Rod) برای تنظیم انحنا وجود دارد.'],
+ ['fretboard','صفحه انگشت‌گذاری (Fretboard)','لایه چوبی روی دسته، معمولاً از چوب رزوود، آبنوس یا افرا. فرت‌ها روی آن نصب شده‌اند.'],
+ ['frets','فرت‌ها (Frets)','نوارهای فلزی که دسته را به نیم‌پرده‌ها تقسیم می‌کنند. فاصله فرت‌ها بر اساس نسبت ریاضی ۲^(۱/۱۲) محاسبه می‌شود؛ فرت ۱۲ دقیقاً وسط طول سیم است.'],
+ ['body','بدنه (Body)','بزرگترین بخش گیتار. در گیتار آکوستیک، جعبه صوتی توخالی صدا را تقویت می‌کند؛ در الکتریک بدنه توپر است و روی سوستین و تُن اثر می‌گذارد.'],
+ ['soundhole','دهانه صوتی (Sound Hole)','سوراخ دایره‌ای در صفحه رویی گیتار آکوستیک که هوا را از جعبه صوتی خارج می‌کند و به بلندی صدا کمک می‌کند. دور آن با "رُزت" تزیین می‌شود.'],
+ ['bridge','خرک (Bridge)','نقطه اتصال سیم‌ها به بدنه و انتقال ارتعاش به صفحه رویی. در گیتار الکتریک می‌تواند ثابت یا متحرک (ترمولو / Floyd Rose) باشد.'],
+ ['pickups','پیکاپ‌ها (Pickups)','در گیتار الکتریک، آهن‌ربا و سیم‌پیچ‌هایی که ارتعاش سیم فلزی را به سیگنال الکتریکی تبدیل می‌کنند. دو نوع اصلی: Single-coil (شفاف) و Humbucker (پرحجم و بدون نویز).'],
+ ['strings','سیم‌ها (Strings)','منبع اصلی تولید صدا. سیم‌های فلزی (فولاد، نیکل، برنز) برای آکوستیک و الکتریک، و نایلونی برای کلاسیک. ضخامت (Gauge) روی صدا و راحتی نوازندگی اثر دارد.'],
+ ['pickguard','صفحه محافظ (Pickguard)','صفحه‌ای پلاستیکی برای محافظت از بدنه در برابر ضربه پیک. در گیتار الکتریک اغلب الکترونیک را هم روی خود دارد.'],
+];
+const partList=document.getElementById('partList'), partInfo=document.getElementById('partInfo');
+function showPart(k){ const p=PARTS.find(x=>x[0]===k); if(!p)return; document.querySelectorAll('#partList button').forEach(b=>b.classList.toggle('active',b.dataset.k===k)); partInfo.innerHTML=`<h4>${p[1]}</h4><p>${p[2]}</p>`; highlight(k); }
+PARTS.forEach(p=>{const b=document.createElement('button'); b.textContent=p[1]; b.dataset.k=p[0]; b.onclick=()=>{showPart(p[0]); }; partList.appendChild(b);});
+
+/* ================= HISTORY ================= */
+const HIST=[['۳۰۰۰ سال پیش','سازهای زهی گردن‌دار مانند «تنبور» در بین‌النهرین و ایران باستان؛ نیاکان دور گیتار.'],['قرن ۸ میلادی','ورود عود (Oud) به اندلس توسط مسلمانان و تأثیر عمیق آن بر سازهای اروپایی.'],['قرن ۱۵–۱۶','گیتار ۴ کُرسی (Vihuela) و گیتار رنسانس در اسپانیا؛ اولین سازهایی با نام «Guitarra».'],['قرن ۱۷–۱۸','گیتار باروک ۵ کُرسی؛ سپس افزوده شدن سیم ششم و رسیدن به ۶ سیم تکی.'],['۱۸۵۰','آنتونیو د توررس، لوتیه اسپانیایی، طرح گیتار کلاسیک مدرن را با بدنه بزرگ‌تر و بریسینگ بادبزنی طراحی کرد.'],['۱۸۳۳','کریستین فردریک مارتین شرکت Martin را در آمریکا تأسیس کرد؛ بعداً بریسینگ X و سیم فلزی را رواج داد.'],['۱۹۳۱','اولین گیتار الکتریک تجاری «Frying Pan» توسط Rickenbacker ساخته شد.'],['۱۹۵۰–۱۹۵۴','فندر Telecaster (۱۹۵۰)، گیبسون Les Paul (۱۹۵۲) و فندر Stratocaster (۱۹۵۴): تولد افسانه‌ها.'],['۱۹۶۰–۱۹۷۰','هندریکس، کلپتون، پیج و بلک‌مور گیتار الکتریک را به نماد فرهنگ راک تبدیل کردند.'],['۲۰۰۰ تا امروز','مدل‌سازی دیجیتال آمپ، گیتارهای MIDI، چاپ سه‌بعدی و مواد کربنی؛ گیتار همچنان در حال تکامل است.']];
+document.getElementById('timeline').innerHTML=HIST.map(h=>`<div class="tl reveal"><div class="yr">${h[0]}</div><p>${h[1]}</p></div>`).join('');
+
+/* ================= TUNER ================= */
+const TUNINGS={'استاندارد (E A D G B E)':[40,45,50,55,59,64],'Drop D':[38,45,50,55,59,64],'Open G':[38,43,50,55,59,62],'DADGAD':[38,45,50,55,57,62],'نیم‌پرده پایین (Eb)':[39,44,49,54,58,63],'Open D':[38,45,50,54,57,62]};
+let curTuning=Object.keys(TUNINGS)[0];
+const tSel=document.getElementById('tuningSel'), tBox=document.getElementById('tunerBox');
+function renderTuner(){ tSel.innerHTML=''; Object.keys(TUNINGS).forEach(k=>{const b=document.createElement('button'); b.textContent=k; b.className=k===curTuning?'active':''; b.onclick=()=>{curTuning=k;renderTuner();}; tSel.appendChild(b);});
+  tBox.innerHTML=''; TUNINGS[curTuning].forEach((m,i)=>{const b=document.createElement('button'); b.innerHTML=`<div class="n">${nameOf(m)}</div><div class="f">${noteFreq(m).toFixed(2)} Hz</div><div class="f">سیم ${6-i}</div>`; b.onclick=()=>{pluck(noteFreq(m),0,3,.5); if(strings[i]) strings[i].userData.vib=1;}; tBox.appendChild(b);}); }
+renderTuner();
+
+/* ================= CHORDS ================= */
+// frets per string (low E to high E), -1 = mute, 0 = open
+const CHORDS={'C':{f:[-1,3,2,0,1,0],d:'دو ماژور – یکی از اولین آکوردهایی که هر گیتاریستی یاد می‌گیرد. صدایی روشن و شاد.'},'D':{f:[-1,-1,0,2,3,2],d:'ر ماژور – شکل مثلثی روی سه سیم بالا. در آهنگ‌های فولک بسیار رایج است.'},'E':{f:[0,2,2,1,0,0],d:'می ماژور – پرقدرت‌ترین آکورد باز؛ هر ۶ سیم نواخته می‌شوند. پایه بلوز و راک.'},'G':{f:[3,2,0,0,0,3],d:'سل ماژور – صدایی باز و پُر. همراه C و D سه‌گانه طلایی موسیقی پاپ.'},'A':{f:[-1,0,2,2,2,0],d:'لا ماژور – سه انگشت در فرت دوم کنار هم. سریع و راحت.'},'Am':{f:[-1,0,2,2,1,0],d:'لا مینور – غمگین و احساسی؛ شکل آن شبیه E ماژور است که یک سیم پایین آمده.'},'Em':{f:[0,2,2,0,0,0],d:'می مینور – ساده‌ترین آکورد: فقط دو انگشت. صدایی تیره و عمیق.'},'Dm':{f:[-1,-1,0,2,3,1],d:'ر مینور – تیره‌ترین آکورد باز به قول شوبرت! مناسب موسیقی احساسی.'},'F':{f:[1,3,3,2,1,1],d:'فا ماژور – اولین آکورد باره (Barre)؛ چالش هر مبتدی. انگشت اشاره کل فرت اول را می‌گیرد.'},'B7':{f:[-1,2,1,2,0,2],d:'سی هفتم – آکورد دومینانت با کشش قوی به E. در بلوز حیاتی است.'},'A7':{f:[-1,0,2,0,2,0],d:'لا هفتم – آکورد بلوزی و جاز؛ صدایی نیمه‌حل‌نشده.'},'G7':{f:[3,2,0,0,0,1],d:'سل هفتم – دومینانت C. در بسیاری از آهنگ‌های کلاسیک و کودکانه.'}};
+let curChord='C'; const cNav=document.getElementById('chordNav');
+Object.keys(CHORDS).forEach(k=>{const b=document.createElement('button'); b.textContent=k; b.onclick=()=>{curChord=k;drawChord();}; cNav.appendChild(b);});
+function drawChord(){ document.querySelectorAll('#chordNav button').forEach(b=>b.classList.toggle('active',b.textContent===curChord)); const c=CHORDS[curChord]; document.getElementById('chordName').textContent=curChord; document.getElementById('chordDesc').textContent=c.d;
+  const x0=40,y0=50,sx=28,sy=40; let s=`<rect x="${x0-4}" y="${y0-6}" width="${sx*5+8}" height="7" fill="#eee"/>`;
+  for(let i=0;i<6;i++) s+=`<line x1="${x0+i*sx}" y1="${y0}" x2="${x0+i*sx}" y2="${y0+sy*4}" stroke="#aaa" stroke-width="${2.5-i*.3}"/>`;
+  for(let j=0;j<=4;j++) s+=`<line x1="${x0}" y1="${y0+j*sy}" x2="${x0+sx*5}" y2="${y0+j*sy}" stroke="#666" stroke-width="2"/>`;
+  c.f.forEach((f,i)=>{ const x=x0+i*sx; if(f===-1) s+=`<text x="${x}" y="${y0-14}" fill="#8b5cf6" font-size="16" text-anchor="middle">✕</text>`; else if(f===0) s+=`<circle cx="${x}" cy="${y0-18}" r="6" fill="none" stroke="#eee" stroke-width="2"/>`; else s+=`<circle cx="${x}" cy="${y0+(f-.5)*sy}" r="10" fill="#22d3ee"/>`; });
+  s+=`<text x="${x0+sx*5+12}" y="${y0+20}" fill="#9aa3b5" font-size="13">1</text>`;
+  document.getElementById('chordSvg').innerHTML=s; }
+drawChord();
+document.getElementById('chordPlay').onclick=()=>{ const c=CHORDS[curChord]; let k=0; c.f.forEach((f,i)=>{ if(f>=0){ pluck(noteFreq(openMidi.acoustic[i]+f),k*0.06,3,.4); if(strings[i]&&currentType!=='bass') setTimeout(()=>strings[i].userData.vib=1,k*60); k++; } }); };
+
+/* ================= METRONOME ================= */
+let bpm=100,ts=4,metroOn=false,metroTimer=null,beat=0; const dots=document.getElementById('beatDots');
+function renderDots(){ dots.innerHTML=''; for(let i=0;i<ts;i++) dots.appendChild(document.createElement('i')); }
+renderDots();
+document.getElementById('bpm').oninput=e=>{bpm=+e.target.value;document.getElementById('bpmVal').textContent=bpm; if(metroOn){stopM();startM();}};
+document.querySelectorAll('[data-ts]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-ts]').forEach(x=>x.classList.remove('active'));b.classList.add('active');ts=+b.dataset.ts;beat=0;renderDots();});
+function startM(){ metroOn=true; document.getElementById('metroBtn').textContent='⏸ توقف'; metroTimer=setInterval(()=>{click(beat===0); [...dots.children].forEach((d,i)=>d.classList.toggle('on',i===beat)); beat=(beat+1)%ts;},60000/bpm); }
+function stopM(){ metroOn=false; clearInterval(metroTimer); document.getElementById('metroBtn').textContent='▶ شروع'; [...dots.children].forEach(d=>d.classList.remove('on')); beat=0; }
+document.getElementById('metroBtn').onclick=()=>metroOn?stopM():startM();
+
+/* ================= QUIZ ================= */
+const QUIZ=[['گیتار استاندارد چند سیم دارد؟',['۴','۵','۶','۷'],2],['کدام گیتار سیم نایلونی دارد؟',['الکتریک','کلاسیک','بیس','آکوستیک فولک'],1],['پیکاپ در گیتار الکتریک چه کاری انجام می‌دهد؟',['سیم را کوک می‌کند','ارتعاش را به سیگنال الکتریکی تبدیل می‌کند','صدا را تقویت می‌کند','فرت‌ها را نگه می‌دارد'],1],['کوک استاندارد گیتار از بم به زیر چیست؟',['E A D G B E','E B G D A E','D A D G A D','C G D A E G'],0],['فرت ۱۲ در چه نقطه‌ای از سیم قرار دارد؟',['یک‌سوم','یک‌چهارم','دقیقاً وسط','دو‌سوم'],2],['گیتار Stratocaster ساخته کدام شرکت است؟',['Gibson','Ibanez','Fender','Martin'],2],['کدام قطعه سیم‌ها را در ابتدای دسته نگه می‌دارد؟',['خرک','شیطانک','پیکاپ','رُزت'],1],['گیتار بیس معمولاً چند سیم دارد؟',['۴','۶','۸','۱۲'],0],['ساده‌ترین آکورد باز کدام است؟',['F','B7','Em','C'],2],['سازنده طرح گیتار کلاسیک مدرن که بود؟',['لئو فندر','آنتونیو د توررس','لس پل','اورویل گیبسون'],1]];
+let qi=0,qs=0; const qQ=document.getElementById('quizQ'),qO=document.getElementById('quizOpts'),qS=document.getElementById('quizScore');
+function renderQ(){ if(qi>=QUIZ.length){ dispatchEvent(new CustomEvent('quizdone',{detail:qs})); qQ.textContent=`پایان! امتیاز شما: ${qs} از ${QUIZ.length} ${qs>=8?'🏆 عالی!':qs>=5?'👍 خوب':'📚 بیشتر تمرین کن'}`; qO.innerHTML='<button id="qAgain">شروع دوباره</button>'; document.getElementById('qAgain').onclick=()=>{qi=0;qs=0;qS.textContent='';renderQ();}; return; } const q=QUIZ[qi]; qQ.textContent=`${qi+1}. ${q[0]}`; qO.innerHTML=''; q[1].forEach((o,i)=>{const b=document.createElement('button'); b.textContent=o; b.style.direction=/^[A-Za-z]/.test(o)?'ltr':'rtl'; b.onclick=()=>{ [...qO.children].forEach(x=>x.disabled=true); if(i===q[2]){b.classList.add('ok');qs++;pluck(659,0,1,.3);} else {b.classList.add('bad'); qO.children[q[2]].classList.add('ok'); pluck(110,0,1,.3);} qS.textContent=`امتیاز: ${qs} / ${qi+1}`; setTimeout(()=>{qi++;renderQ();},1200); }; qO.appendChild(b);}); }
+renderQ();
+
+/* ================= GALLERY ================= */
+const GAL=[['Vintage Sunburst','acoustic','sunburst',0xc98a3c,'#f6c76a','#5a1e0a'],['Cherry Red Rock','electric','gloss',0xb8262b,'#ff4a55','#4a0a10'],['Ocean Blue','electric','metal',0x1c4fa1,'#3f8dff','#0a1a4a'],['Classical Natural','classical','matte',0xd9b27a,'#f0d9a8','#7a5a2a'],['Midnight Bass','bass','gloss',0x111111,'#3a3a44','#050507'],['Emerald','electric','gloss',0x1e8a4c,'#3fd47a','#063a1c'],['Purple Haze','electric','metal',0x7a2d8e,'#c05ad8','#2a0a34'],['Arctic White','electric','gloss',0xf5f0e6,'#ffffff','#9a9a9a']];
+const gal=document.getElementById('gal');
+GAL.forEach(g=>{const d=document.createElement('div'); d.className='g reveal'; d.innerHTML=`<svg viewBox="0 0 200 160"><defs><radialGradient id="g${g[1]}${g[3]}" cx="50%" cy="50%"><stop offset="0" stop-color="${g[4]}"/><stop offset="1" stop-color="${g[5]}"/></radialGradient></defs><rect width="200" height="160" fill="url(#g${g[1]}${g[3]})"/><path d="M100 30 c-20 0 -30 20 -20 35 c-15 10 -15 45 20 45 c35 0 35 -35 20 -45 c10 -15 0 -35 -20 -35z" fill="rgba(0,0,0,.35)"/><rect x="97" y="0" width="6" height="55" fill="rgba(0,0,0,.4)"/><circle cx="100" cy="80" r="8" fill="#000" opacity=".6"/></svg><span>${g[0]}</span>`;
+  d.onclick=()=>{ setActive('#typeBtns','t',g[1]); currentColor=g[3]; buildGuitar(g[1]); setActive('#finishBtns','f',g[2]); applyFinish(g[2]); scrollTo({top:0,behavior:'smooth'}); }; gal.appendChild(d);});
+
+/* ================= 3D TILT CARDS ================= */
+function addTilt(el,max=12){ el.classList.add('tilt'); el.addEventListener('pointermove',e=>{ const r=el.getBoundingClientRect(); const x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height; el.style.setProperty('--mx',x*100+'%'); el.style.setProperty('--my',y*100+'%'); el.style.transform=`rotateX(${(0.5-y)*max}deg) rotateY(${(x-0.5)*max}deg) translateZ(6px)`; }); el.addEventListener('pointerleave',()=>el.style.transform=''); }
+document.querySelectorAll('.card,.tl,.gal .g,.tuner button,.quiz,.chord-box,.metro').forEach(el=>addTilt(el, el.classList.contains('card')?14:6));
+new MutationObserver(()=>document.querySelectorAll('.tuner button:not(.tilt)').forEach(b=>addTilt(b,8))).observe(tBox,{childList:true});
+
+/* ================= MINI 3D GUITARS IN GALLERY ================= */
+(function(){ const cards=[...document.querySelectorAll('.gal .g')]; if(!cards.length)return;
+  const r2=new THREE.WebGLRenderer({antialias:true,alpha:true}); r2.setPixelRatio(Math.min(devicePixelRatio,2)); r2.setSize(300,220); r2.outputColorSpace=THREE.SRGBColorSpace; r2.toneMapping=THREE.ACESFilmicToneMapping;
+  const sc=new THREE.Scene(); sc.environment=scene.environment; const cam=new THREE.PerspectiveCamera(35,300/220,.1,50); cam.position.set(0,2.2,6.2); cam.lookAt(0,0,0);
+  const l=new THREE.DirectionalLight(0xffffff,2); l.position.set(3,5,4); sc.add(l,new THREE.AmbientLight(0xffffff,.4));
+  const minis=cards.map((c,i)=>{ const g=GAL[i]; const cv=document.createElement('canvas'); cv.width=300;cv.height=220; c.querySelector('svg').replaceWith(cv); const mat=new THREE.MeshPhysicalMaterial({color:g[3],map:g[2]==='metal'?null:spruceTex,metalness:g[2]==='metal'?.9:0,roughness:g[2]==='matte'?.8:.2,clearcoat:g[2]==='matte'?0:1});
+    const grp=new THREE.Group(); const bg=new THREE.ExtrudeGeometry(bodyShape(g[1]),{depth:(g[1]==='electric'||g[1]==='bass')?.22:.5,bevelEnabled:true,bevelThickness:.04,bevelSize:.04,bevelSegments:6,curveSegments:64}); bg.center(); bg.rotateX(-Math.PI/2);
+    const body=new THREE.Mesh(bg,mat); grp.add(body); const neck=new THREE.Mesh(new THREE.BoxGeometry(.3,.12,2),neckMat); neck.position.set(0,.2,-1.7); grp.add(neck); const fb=new THREE.Mesh(new THREE.BoxGeometry(.3,.03,2),fretMat); fb.position.set(0,.28,-1.7); grp.add(fb);
+    for(let s=0;s<6;s++){ const st=new THREE.Mesh(new THREE.CylinderGeometry(.006,.006,3.2,8),stringMat); st.rotation.x=Math.PI/2; st.position.set(-.1+s*.04,.32,-1.1); grp.add(st); }
+    grp.rotation.x=.9; grp.scale.setScalar(.9); grp.position.z=.6; return {grp,cv,ctx:cv.getContext('2d')}; });
+  function tick(){ requestAnimationFrame(tick); minis.forEach((m,i)=>{ const rect=m.cv.getBoundingClientRect(); if(rect.bottom<0||rect.top>innerHeight)return; sc.children.filter(o=>o.isGroup).forEach(o=>sc.remove(o)); m.grp.rotation.y+=.01; sc.add(m.grp); r2.render(sc,cam); m.ctx.clearRect(0,0,300,220); m.ctx.drawImage(r2.domElement,0,0); }); }
+  tick(); })();
+
+/* ================= METRONOME EQ ================= */
+const eq=document.getElementById('eq'); for(let i=0;i<10;i++) eq.appendChild(document.createElement('i'));
+setInterval(()=>{ [...eq.children].forEach(b=>b.style.height=(metroOn?20+Math.random()*80:20)+'%'); },90);
+
+/* ================= PARALLAX HERO TEXT ================= */
+addEventListener('pointermove',e=>{ const x=(e.clientX/innerWidth-.5), y=(e.clientY/innerHeight-.5); document.querySelector('.hero-text').style.transform=`translateY(-50%) translate(${x*-20}px,${y*-14}px)`; });
+
+/* ================= AUTH (client-side accounts, localStorage) ================= */
+const DB={ get users(){ return JSON.parse(localStorage.getItem('g3d_users')||'{}'); }, set users(v){ localStorage.setItem('g3d_users',JSON.stringify(v)); },
+  get session(){ return localStorage.getItem('g3d_session'); }, set session(v){ v?localStorage.setItem('g3d_session',v):localStorage.removeItem('g3d_session'); } };
+async function hash(s){ const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode('g3d|'+s)); return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join(''); }
+const toastEl=document.getElementById('toast'); let toastT; function toast(m){ toastEl.textContent=m; toastEl.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>toastEl.classList.remove('show'),2600); }
+function me(){ const e=DB.session; return e?DB.users[e]:null; }
+function saveMe(u){ const us=DB.users; us[u.email]=u; DB.users=us; }
+const modal=document.getElementById('authModal'); let tab='login';
+function openAuth(t='login'){ tab=t; document.querySelectorAll('.mbox .tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===t)); document.getElementById('fName').style.display=document.getElementById('fLevel').style.display=t==='signup'?'block':'none'; document.getElementById('strength').style.display=t==='signup'?'block':'none'; document.getElementById('authGo').textContent=t==='signup'?'ساخت حساب':'ورود'; document.getElementById('authErr').textContent=''; modal.classList.add('open'); setTimeout(()=>document.getElementById(t==='signup'?'aName':'aEmail').focus(),100); }
+document.querySelectorAll('.mbox .tabs button').forEach(b=>b.onclick=()=>openAuth(b.dataset.tab));
+document.getElementById('authClose').onclick=()=>modal.classList.remove('open'); modal.onclick=e=>{ if(e.target===modal) modal.classList.remove('open'); };
+document.getElementById('aPass').oninput=e=>{ const v=e.target.value; let s=0; if(v.length>=6)s++; if(/[A-Z]/.test(v))s++; if(/[0-9]/.test(v))s++; if(/[^A-Za-z0-9]/.test(v))s++; document.querySelector('#strength i').style.width=(s*25)+'%'; };
+document.getElementById('authForm').onsubmit=async e=>{ e.preventDefault(); const email=document.getElementById('aEmail').value.trim().toLowerCase(), pass=document.getElementById('aPass').value, err=document.getElementById('authErr'); const us=DB.users;
+  if(tab==='signup'){ const name=document.getElementById('aName').value.trim(); if(!name) return err.textContent='نام را وارد کنید'; if(us[email]) return err.textContent='این ایمیل قبلاً ثبت شده است'; if(pass.length<6) return err.textContent='رمز حداقل ۶ کاراکتر';
+    us[email]={email,name,level:document.getElementById('aLevel').value,pw:await hash(pass),joined:Date.now(),guitars:[],bestScore:0,plays:0}; DB.users=us; DB.session=email; modal.classList.remove('open'); toast('🎉 حساب ساخته شد، خوش آمدید '+name); }
+  else { const u=us[email]; if(!u||u.pw!==await hash(pass)) return err.textContent='ایمیل یا رمز عبور اشتباه است'; DB.session=email; modal.classList.remove('open'); toast('👋 خوش برگشتی '+u.name); }
+  renderAuth(); };
+function logout(){ DB.session=null; renderAuth(); toast('خارج شدید'); }
+const umenu=document.getElementById('umenu');
+function renderAuth(){ const u=me(); const bar=document.getElementById('authbar'); umenu.classList.remove('open');
+  if(!u){ bar.innerHTML='<button class="ghost" id="loginBtn">ورود</button><button id="signupBtn">ثبت‌نام رایگان</button>'; document.getElementById('loginBtn').onclick=()=>openAuth('login'); document.getElementById('signupBtn').onclick=()=>openAuth('signup'); }
+  else { bar.innerHTML=`<div class="avatar" id="avBtn">${u.name[0].toUpperCase()}</div><span style="font-size:13px">${u.name}</span>`; umenu.innerHTML=`<div class="u"><b>${u.name}</b><small>${u.email}</small><small>سطح: ${u.level}</small></div><button onclick="location.hash='#profile'">🎸 گیتارهای من (${u.guitars.length})</button><button onclick="location.hash='#quiz'">🏆 بهترین امتیاز: ${u.bestScore}/10</button><button id="logoutBtn">🚪 خروج</button>`; document.getElementById('avBtn').onclick=()=>umenu.classList.toggle('open'); document.getElementById('logoutBtn').onclick=logout; }
+  renderProfile(); }
+document.addEventListener('click',e=>{ if(!e.target.closest('#umenu,#avBtn')) umenu.classList.remove('open'); });
+// save current guitar config
+document.getElementById('saveCfgBtn').onclick=()=>{ const u=me(); if(!u){ openAuth('signup'); toast('برای ذخیره، ابتدا وارد شوید'); return; } const name=prompt('نام این طرح:','گیتار من '+(u.guitars.length+1)); if(!name) return;
+  u.guitars.unshift({name,type:currentType,color:currentColor,finish:currentFinish,env:document.querySelector('#envBtns .active').dataset.e,date:Date.now()}); if(u.guitars.length>12) u.guitars.length=12; saveMe(u); renderAuth(); toast('💾 ذخیره شد'); };
+function loadCfg(c){ currentColor=c.color; setActive('#typeBtns','t',c.type); buildGuitar(c.type); setActive('#finishBtns','f',c.finish); applyFinish(c.finish); setActive('#envBtns','e',c.env); setEnv(c.env); document.querySelectorAll('.sw').forEach(x=>x.classList.toggle('active',x.style.background===('#'+c.color.toString(16).padStart(6,'0')))); scrollTo({top:0,behavior:'smooth'}); toast('🎸 '+c.name+' بارگذاری شد'); }
+const TYPE_FA={acoustic:'آکوستیک',electric:'الکتریک',classical:'کلاسیک',bass:'بیس'};
+function renderProfile(){ const u=me(); const box=document.getElementById('profileBox');
+  if(!u){ box.innerHTML='<div class="locked">🔒 برای دیدن پروفایل و ذخیره طرح‌های گیتار، وارد شوید یا ثبت‌نام کنید.<br><br><button class="play-btn" id="pfLogin">ورود / ثبت‌نام</button></div>'; document.getElementById('pfLogin').onclick=()=>openAuth('signup'); return; }
+  const days=Math.max(1,Math.round((Date.now()-u.joined)/864e5));
+  const all=Object.values(DB.users).sort((a,b)=>b.bestScore-a.bestScore).slice(0,5);
+  box.innerHTML=`<div class="grid"><div class="card"><div class="ic">🎸</div><h4>${u.guitars.length}</h4><p>گیتار ذخیره‌شده</p></div><div class="card"><div class="ic">🏆</div><h4>${u.bestScore}/10</h4><p>بهترین امتیاز آزمون</p></div><div class="card"><div class="ic">🎵</div><h4>${u.plays}</h4><p>سیم نواخته‌شده</p></div><div class="card"><div class="ic">📅</div><h4>${days}</h4><p>روز عضویت · سطح ${u.level}</p></div></div>
+  <h3 style="margin-top:34px;color:var(--accent)">گیتارهای من</h3>
+  <div class="saved-list">${u.guitars.length?u.guitars.map((g,i)=>`<div class="s" data-i="${i}"><button class="del" data-d="${i}">✕</button><i style="background:linear-gradient(135deg,#${g.color.toString(16).padStart(6,'0')},#000)"></i><b>${g.name}</b><small>${TYPE_FA[g.type]} · ${g.finish}</small><small>${new Date(g.date).toLocaleDateString('fa-IR')}</small></div>`).join(''):'<div class="locked" style="grid-column:1/-1">هنوز طرحی ذخیره نکرده‌اید. در پنل بالای صفحه روی «💾 ذخیره گیتار» بزنید.</div>'}</div>
+  <h3 style="margin-top:34px;color:var(--accent)">جدول برترین‌ها</h3><table class="lb"><tr><th>#</th><th>نام</th><th>سطح</th><th>امتیاز</th></tr>${all.map((a,i)=>`<tr class="${a.email===u.email?'me':''}"><td>${i+1}</td><td>${a.name}</td><td>${a.level}</td><td>${a.bestScore}/10</td></tr>`).join('')}</table>`;
+  box.querySelectorAll('.s').forEach(el=>el.onclick=e=>{ if(e.target.classList.contains('del')){ u.guitars.splice(+e.target.dataset.d,1); saveMe(u); renderAuth(); return; } loadCfg(u.guitars[+el.dataset.i]); });
+  box.querySelectorAll('.card').forEach(c=>addTilt(c,10)); }
+renderAuth();
+// hook: quiz score & plays
+const _renderQ=renderQ; 
+addEventListener('quizdone',e=>{ const u=me(); if(u){ if(e.detail>u.bestScore) u.bestScore=e.detail; saveMe(u); renderAuth(); } });
+const _strum=strumString; strumString=(i,w)=>{ _strum(i,w); const u=me(); if(u){ u.plays++; if(u.plays%10===0) saveMe(u);} };
+
+/* ================= REVEAL ================= */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a396cc08daeb90a2',t:'MTc4OTEzMTAxNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
