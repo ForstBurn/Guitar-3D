@@ -3,9 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>گیتار ۳بعدی | دنیای گیتار</title>
+<meta name="description" content="سایت سه‌بعدی تعاملی گیتار: نمایش ۳D انواع گیتار، تیونر، آکوردها، مترونوم، تاریخچه و آزمون. طراحی امیرمحمد فلاح">
+<meta name="author" content="Amir Mohammad Fallah">
+<meta name="theme-color" content="#0b0d12">
+<link rel="canonical" href="https://forstburn.github.io/Guitar-3D/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎸%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Guitar 3D">
+<meta property="og:title" content="Guitar 3D | دنیای گیتار در سه بُعد">
+<meta property="og:description" content="گیتار را بچرخانید، رنگش را عوض کنید، سیم‌هایش را بنوازید. تیونر، آکورد، مترونوم و آزمون.">
+<meta property="og:url" content="https://forstburn.github.io/Guitar-3D/">
+<meta property="og:image" content="https://forstburn.github.io/Guitar-3D/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:locale" content="fa_IR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Guitar 3D | دنیای گیتار در سه بُعد">
+<meta name="twitter:description" content="سایت سه‌بعدی تعاملی گیتار با تیونر، آکورد و مترونوم">
+<meta name="twitter:image" content="https://forstburn.github.io/Guitar-3D/og.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Guitar 3D","url":"https://forstburn.github.io/Guitar-3D/","author":{"@type":"Person","name":"Amir Mohammad Fallah"},"image":"https://forstburn.github.io/Guitar-3D/og.jpg","inLanguage":"fa"}</script>
+<title>Guitar 3D | دنیای گیتار در سه بُعد</title>
 <style>
-  :root{--bg:#0b0d12;--panel:rgba(18,21,30,.85);--accent:#f2a93b;--accent2:#e0623a;--text:#eef1f7;--muted:#9aa3b5;--border:rgba(255,255,255,.08)}
+  :root{--bg:#0b0d12;--panel:rgba(18,21,30,.85);--accent:#22d3ee;--accent2:#8b5cf6;--text:#eef1f7;--muted:#9aa3b5;--border:rgba(255,255,255,.08)}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:Tahoma,"Segoe UI",Vazirmatn,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
@@ -22,7 +40,7 @@
   .hero-text h1{font-size:56px;line-height:1.15;margin-bottom:14px}
   .hero-text h1 span{color:var(--accent)}
   .hero-text p{color:var(--muted);font-size:17px;line-height:1.8}
-  .hero-text .cta{pointer-events:auto;display:inline-block;margin-top:22px;padding:12px 28px;border-radius:30px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;font-weight:700;box-shadow:0 8px 30px rgba(242,169,59,.35);transition:.2s}
+  .hero-text .cta{pointer-events:auto;display:inline-block;margin-top:22px;padding:12px 28px;border-radius:30px;background:linear-gradient(90deg,var(--accent),var(--accent2));color:#111;font-weight:700;box-shadow:0 8px 30px rgba(34,211,238,.35);transition:.2s}
   .hero-text .cta:hover{transform:translateY(-2px)}
   /* CONTROL PANEL */
   .panel{position:absolute;left:24px;top:90px;width:290px;background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:16px;backdrop-filter:blur(12px);font-size:13px;max-height:calc(100vh - 120px);overflow-y:auto}
@@ -50,7 +68,7 @@
   section .sub{color:var(--muted);font-size:16px;margin-bottom:40px;line-height:1.8}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
   .card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:22px;transition:.25s;position:relative;overflow:hidden}
-  .card:hover{transform:translateY(-6px);border-color:rgba(242,169,59,.5);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+  .card:hover{transform:translateY(-6px);border-color:rgba(34,211,238,.5);box-shadow:0 20px 50px rgba(0,0,0,.4)}
   .card h4{font-size:18px;margin-bottom:8px;color:var(--accent)}
   .card p{color:var(--muted);font-size:14px;line-height:1.8}
   .card .ic{font-size:36px;margin-bottom:10px}
@@ -58,14 +76,14 @@
   .parts-wrap{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
   .part-list{display:flex;flex-direction:column;gap:8px}
   .part-list button{text-align:right;background:var(--panel);border:1px solid var(--border);color:var(--text);padding:12px 16px;border-radius:10px;cursor:pointer;font-family:inherit;font-size:14px;transition:.2s}
-  .part-list button:hover,.part-list button.active{border-color:var(--accent);background:rgba(242,169,59,.12)}
+  .part-list button:hover,.part-list button.active{border-color:var(--accent);background:rgba(34,211,238,.12)}
   .part-info{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:26px;min-height:200px;position:sticky;top:90px}
   .part-info h4{font-size:22px;color:var(--accent);margin-bottom:10px}
   .part-info p{color:var(--muted);line-height:1.9}
   /* TIMELINE */
-  .timeline{position:relative;padding-right:30px;border-right:2px solid rgba(242,169,59,.3)}
+  .timeline{position:relative;padding-right:30px;border-right:2px solid rgba(34,211,238,.3)}
   .tl{position:relative;margin-bottom:34px;padding-right:20px}
-  .tl::before{content:"";position:absolute;right:-37px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(242,169,59,.2)}
+  .tl::before{content:"";position:absolute;right:-37px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px rgba(34,211,238,.2)}
   .tl .yr{font-weight:800;color:var(--accent);font-size:18px}
   .tl p{color:var(--muted);line-height:1.8;margin-top:4px}
   /* TUNER */
@@ -111,32 +129,32 @@
   @media(max-width:900px){.panel{display:none}.hero-text h1{font-size:36px}.parts-wrap{grid-template-columns:1fr}.tuner{grid-template-columns:repeat(3,1fr)}nav ul{display:none}}
 
   /* ===== 3D UI upgrades ===== */
-  body{background:radial-gradient(1200px 600px at 80% -10%,rgba(242,169,59,.08),transparent 60%),radial-gradient(900px 500px at 10% 30%,rgba(224,98,58,.06),transparent 60%),var(--bg)}
+  body{background:radial-gradient(1200px 600px at 80% -10%,rgba(34,211,238,.08),transparent 60%),radial-gradient(900px 500px at 10% 30%,rgba(139,92,246,.06),transparent 60%),var(--bg)}
   section{perspective:1200px}
   .card,.tl,.part-list button,.tuner button,.chord-box,.metro,.quiz,.gal .g{transform-style:preserve-3d;will-change:transform}
   .card{background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.01));box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08)}
-  .card::after{content:"";position:absolute;inset:-1px;border-radius:16px;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(242,169,59,.18),transparent 45%);opacity:0;transition:.3s;pointer-events:none}
+  .card::after{content:"";position:absolute;inset:-1px;border-radius:16px;background:radial-gradient(400px circle at var(--mx,50%) var(--my,50%),rgba(34,211,238,.18),transparent 45%);opacity:0;transition:.3s;pointer-events:none}
   .card:hover::after{opacity:1}
   .card .ic{display:inline-block;transform:translateZ(40px);filter:drop-shadow(0 8px 12px rgba(0,0,0,.5))}
   .card h4{transform:translateZ(25px)}.card p{transform:translateZ(10px)}
   .tilt{transition:transform .15s ease-out,box-shadow .3s,border-color .3s}
   .tuner button{background:linear-gradient(180deg,#22283a,#0d1017);box-shadow:0 8px 0 #05070b,0 14px 24px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.1)}
   .tuner button:active{transform:translateY(6px)!important;box-shadow:0 2px 0 #05070b,0 4px 10px rgba(0,0,0,.5)}
-  .tuner .n{background:linear-gradient(180deg,#fff,#f2a93b);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tuner .n{background:linear-gradient(180deg,#fff,#22d3ee);-webkit-background-clip:text;background-clip:text;color:transparent}
   .chord-box svg{filter:drop-shadow(0 20px 25px rgba(0,0,0,.6));transform:rotateY(-14deg) rotateX(6deg);transition:.5s}
   .chord-box:hover svg{transform:rotateY(0) rotateX(0)}
-  .metro .bpm{text-shadow:0 0 30px rgba(242,169,59,.6),0 6px 0 rgba(0,0,0,.6)}
+  .metro .bpm{text-shadow:0 0 30px rgba(34,211,238,.6),0 6px 0 rgba(0,0,0,.6)}
   .metro .beat i{box-shadow:inset 0 2px 4px rgba(0,0,0,.6)}
   .metro .beat i.on{transform:scale(1.35)}
-  .tl::before{box-shadow:0 0 0 5px rgba(242,169,59,.2),0 0 22px var(--accent)}
+  .tl::before{box-shadow:0 0 0 5px rgba(34,211,238,.2),0 0 22px var(--accent)}
   .tl{background:linear-gradient(90deg,rgba(255,255,255,.03),transparent);border-radius:10px;padding:10px 20px 10px 10px}
   .gal .g{box-shadow:0 15px 35px rgba(0,0,0,.5)}
   .gal .g canvas{width:100%;height:100%;display:block}
   .quiz .opts button{box-shadow:0 4px 0 rgba(0,0,0,.5)}.quiz .opts button:active{transform:translateY(3px);box-shadow:none}
   .panel{box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.08)}
   .hero-text h1{text-shadow:0 10px 30px rgba(0,0,0,.6)}
-  .hero-text h1 span{text-shadow:0 0 40px rgba(242,169,59,.7)}
-  .stage-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 100%,rgba(242,169,59,.12),transparent 55%)}
+  .hero-text h1 span{text-shadow:0 0 40px rgba(34,211,238,.7)}
+  .stage-glow{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 100%,rgba(34,211,238,.12),transparent 55%)}
   section h2{position:relative;display:inline-block}
   section h2::after{content:"";position:absolute;right:0;bottom:-8px;width:60%;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--accent),transparent)}
   .eq{display:flex;gap:4px;align-items:flex-end;height:40px;margin-top:14px}
@@ -202,8 +220,8 @@
       </div>
     </div>
     <div class="group">
-      <label>شدت نور: <span id="lightVal">1.0</span></label>
-      <input type="range" id="lightRange" min="0.2" max="3" step="0.1" value="1">
+      <label>شدت نور: <span id="lightVal">0.8</span></label>
+      <input type="range" id="lightRange" min="0.2" max="2" step="0.1" value="0.8">
     </div>
     <div class="group">
       <div class="toggle"><span>چرخش خودکار</span><input type="checkbox" id="autoRot" checked></div>
@@ -358,49 +376,49 @@ const nameOf = m => NOTE_NAMES[m%12]+(Math.floor(m/12)-1);
 /* ================= THREE SCENE ================= */
 const hero=document.getElementById('hero');
 const renderer=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(innerWidth,innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio,2.5)); renderer.setSize(innerWidth,innerHeight);
 renderer.shadowMap.enabled=true; renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.outputColorSpace=THREE.SRGBColorSpace;
+renderer.toneMapping=THREE.ACESFilmicToneMapping; renderer.toneMappingExposure=0.8; renderer.outputColorSpace=THREE.SRGBColorSpace;
 hero.prepend(renderer.domElement);
 const scene=new THREE.Scene(); scene.background=new THREE.Color(0x0b0d12); scene.fog=new THREE.FogExp2(0x0b0d12,0.035);
 // realistic image-based lighting (reflections on lacquer & metal)
-const pmrem=new THREE.PMREMGenerator(renderer); scene.environment=pmrem.fromScene(new RoomEnvironment(renderer),0.04).texture;
+const pmrem=new THREE.PMREMGenerator(renderer); scene.environment=pmrem.fromScene(new RoomEnvironment(renderer),0.04).texture; scene.environmentIntensity=0.55;
 // post-processing: bloom for glow on metal/neon
-const composer=new EffectComposer(renderer); const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),0.2,0.5,0.9);
+const composer=new EffectComposer(renderer); const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),0.08,0.4,0.95);
 let renderPass, outputPass;
 const camera=new THREE.PerspectiveCamera(40,innerWidth/innerHeight,0.1,100); camera.position.set(-3.2,1.2,5.5);
 renderPass=new RenderPass(scene,camera); outputPass=new OutputPass(); composer.addPass(renderPass); composer.addPass(bloom); composer.addPass(outputPass);
 const controls=new OrbitControls(camera,renderer.domElement); controls.enableDamping=true; controls.autoRotate=true; controls.autoRotateSpeed=1.2; controls.minDistance=2; controls.maxDistance=12; controls.target.set(0,0.2,0);
 
 // lights
-const hemi=new THREE.HemisphereLight(0xffffff,0x223344,.5); scene.add(hemi);
-const key=new THREE.DirectionalLight(0xffffff,2.2); key.position.set(4,6,5); key.castShadow=true; key.shadow.mapSize.set(2048,2048); key.shadow.camera.left=-5;key.shadow.camera.right=5;key.shadow.camera.top=5;key.shadow.camera.bottom=-5; scene.add(key);
-const fill=new THREE.DirectionalLight(0x88aaff,.8); fill.position.set(-5,2,-3); scene.add(fill);
-const rim=new THREE.SpotLight(0xf2a93b,3,20,Math.PI/5,.5); rim.position.set(0,5,-5); scene.add(rim);
+const hemi=new THREE.HemisphereLight(0xffffff,0x223344,.25); scene.add(hemi);
+const key=new THREE.DirectionalLight(0xffffff,1.3); key.position.set(4,6,5); key.castShadow=true; key.shadow.mapSize.set(2048,2048); key.shadow.camera.left=-5;key.shadow.camera.right=5;key.shadow.camera.top=5;key.shadow.camera.bottom=-5; scene.add(key);
+const fill=new THREE.DirectionalLight(0x88aaff,.4); fill.position.set(-5,2,-3); scene.add(fill);
+const rim=new THREE.SpotLight(0x22d3ee,1.5,20,Math.PI/5,.5); rim.position.set(0,5,-5); scene.add(rim);
 const p1=new THREE.PointLight(0xff3366,0,20), p2=new THREE.PointLight(0x33ccff,0,20); p1.position.set(-4,2,3); p2.position.set(4,2,-3); scene.add(p1,p2);
 
 // floor
-const floor=new THREE.Mesh(new THREE.CircleGeometry(12,64),new THREE.MeshPhysicalMaterial({color:0x0f1219,roughness:.25,metalness:.6,clearcoat:1,clearcoatRoughness:.15}));
+const floor=new THREE.Mesh(new THREE.CircleGeometry(12,64),new THREE.MeshPhysicalMaterial({color:0x0c0f16,roughness:.5,metalness:.4,clearcoat:.6,clearcoatRoughness:.3}));
 floor.rotation.x=-Math.PI/2; floor.position.y=-2.1; floor.receiveShadow=true; scene.add(floor);
 const gridH=new THREE.GridHelper(24,48,0x222833,0x1a1f29); gridH.position.y=-2.09; scene.add(gridH);
 
 // particles
 const pGeo=new THREE.BufferGeometry(); const pc=1200; const pp=new Float32Array(pc*3);
 for(let i=0;i<pc*3;i++) pp[i]=(Math.random()-.5)*30; pGeo.setAttribute('position',new THREE.BufferAttribute(pp,3));
-const particles=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0xf2a93b,size:.06,transparent:true,opacity:.7,sizeAttenuation:true,blending:THREE.AdditiveBlending,depthWrite:false})); scene.add(particles);
+const particles=new THREE.Points(pGeo,new THREE.PointsMaterial({color:0x22d3ee,size:.045,transparent:true,opacity:.45,sizeAttenuation:true,blending:THREE.AdditiveBlending,depthWrite:false})); scene.add(particles);
 
 /* ---------- Guitar builder ---------- */
 const guitar=new THREE.Group(); scene.add(guitar);
 const parts={}; let strings=[]; let stringBaseY=[];
 // ---- procedural high-res wood grain textures ----
-function woodTexture(base,dark,rings=28,size=1024,noise=.35){ const c=document.createElement('canvas'); c.width=c.height=size; const g=c.getContext('2d');
+function woodTexture(base,dark,rings=28,size=2048,noise=.28){ const c=document.createElement('canvas'); c.width=c.height=size; const g=c.getContext('2d');
   g.fillStyle=base; g.fillRect(0,0,size,size);
   for(let i=0;i<rings*6;i++){ const y=i*(size/(rings*6)); const w=Math.random()*3+.5; g.strokeStyle=dark; g.globalAlpha=Math.random()*noise+.05; g.lineWidth=w; g.beginPath(); for(let x=0;x<=size;x+=16){ g.lineTo(x, y+Math.sin(x*.012+i)*6+Math.sin(x*.05+i*3)*2); } g.stroke(); }
   g.globalAlpha=1; const id=g.getImageData(0,0,size,size); const d=id.data; for(let i=0;i<d.length;i+=4){ const n=(Math.random()-.5)*14; d[i]+=n;d[i+1]+=n;d[i+2]+=n; } g.putImageData(id,0,0);
   const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.wrapS=t.wrapT=THREE.RepeatWrapping; t.anisotropy=renderer.capabilities.getMaxAnisotropy(); return t; }
 function bumpFrom(tex){ const t=tex.clone(); t.colorSpace=THREE.NoColorSpace; t.needsUpdate=true; return t; }
-const spruceTex=woodTexture('#e2b877','#b07c3a',40), mahoganyTex=woodTexture('#6b3a1e','#3a1c0a',30), rosewoodTex=woodTexture('#2a1a12','#0e0805',24), mapleTex=woodTexture('#d9b98a','#b08a55',36);
-const bodyMat=new THREE.MeshPhysicalMaterial({color:0xc98a3c,map:spruceTex,bumpMap:bumpFrom(spruceTex),bumpScale:.004,roughness:.18,metalness:.0,clearcoat:1,clearcoatRoughness:.06,reflectivity:.6,sheen:.2});
+const spruceTex=woodTexture('#e6c48e','#c49a5a',70), mahoganyTex=woodTexture('#6b3a1e','#3a1c0a',30), rosewoodTex=woodTexture('#2a1a12','#0e0805',24), mapleTex=woodTexture('#d9b98a','#b08a55',36);
+const bodyMat=new THREE.MeshPhysicalMaterial({color:0xc98a3c,map:spruceTex,bumpMap:bumpFrom(spruceTex),bumpScale:.004,roughness:.35,metalness:.0,clearcoat:.8,clearcoatRoughness:.15,reflectivity:.4});
 const neckMat=new THREE.MeshPhysicalMaterial({color:0xffffff,map:mahoganyTex,bumpMap:bumpFrom(mahoganyTex),bumpScale:.003,roughness:.45,clearcoat:.5,clearcoatRoughness:.3});
 const fretMat=new THREE.MeshPhysicalMaterial({color:0xffffff,map:rosewoodTex,bumpMap:bumpFrom(rosewoodTex),bumpScale:.002,roughness:.55});
 const metal=new THREE.MeshPhysicalMaterial({color:0xe8e8ec,roughness:.15,metalness:1,clearcoat:.3});
@@ -433,42 +451,42 @@ function buildGuitar(type){
   const scaleLen = type==='bass'?3.0:2.6;
   const depth = isE?.22:.5;
   // body
-  const bodyGeo=new THREE.ExtrudeGeometry(bodyShape(type),{depth,bevelEnabled:true,bevelThickness:isE?.06:.045,bevelSize:isE?.06:.045,bevelSegments:10,curveSegments:96});
+  const bodyGeo=new THREE.ExtrudeGeometry(bodyShape(type),{depth,bevelEnabled:true,bevelThickness:isE?.06:.045,bevelSize:isE?.06:.045,bevelSegments:16,curveSegments:160});
   bodyGeo.center(); bodyGeo.rotateX(-Math.PI/2);
   const body=new THREE.Mesh(bodyGeo,bodyMat); body.castShadow=body.receiveShadow=true; body.position.y=-1.0; guitar.add(body); parts.body=body;
   // binding (cream edge) for acoustic; wooden back/sides material for acoustic uses mahogany
   if(!isE){ const pts=bodyShape(type).getPoints(160).map(v=>new THREE.Vector3(v.x*1.0,0,-v.y)); const curve=new THREE.CatmullRomCurve3(pts,true);
-    const bind=new THREE.Mesh(new THREE.TubeGeometry(curve,320,.014,10,true),new THREE.MeshPhysicalMaterial({color:0xf3ead2,roughness:.35,clearcoat:.8})); bind.position.set(0,body.position.y+depth/2+.02,0); guitar.add(bind);
+    const bind=new THREE.Mesh(new THREE.TubeGeometry(curve,600,.014,16,true),new THREE.MeshPhysicalMaterial({color:0xf3ead2,roughness:.35,clearcoat:.8})); bind.position.set(0,body.position.y+depth/2+.02,0); guitar.add(bind);
     const bind2=bind.clone(); bind2.position.y=body.position.y-depth/2-.02; guitar.add(bind2); }
   const topY = body.position.y + depth/2 + .04;
   // sound hole / pickups
   if(!isE){
-    const hole=new THREE.Mesh(new THREE.CylinderGeometry(.24,.24,.06,48),darkMat); hole.position.set(0,topY,-.35+ -0.0); hole.position.z=-0.35; hole.position.y=topY+.001; guitar.add(hole); parts.soundhole=hole;
-    const rosette=new THREE.Mesh(new THREE.RingGeometry(.25,.32,64),new THREE.MeshStandardMaterial({color:0x222,roughness:.5,side:THREE.DoubleSide})); rosette.rotation.x=-Math.PI/2; rosette.position.set(0,topY+.005,-.35); guitar.add(rosette);
+    const hole=new THREE.Mesh(new THREE.CylinderGeometry(.24,.24,.06,96),darkMat); hole.position.set(0,topY,-.35+ -0.0); hole.position.z=-0.35; hole.position.y=topY+.001; guitar.add(hole); parts.soundhole=hole;
+    const rosette=new THREE.Mesh(new THREE.RingGeometry(.25,.32,128),new THREE.MeshStandardMaterial({color:0x222,roughness:.5,side:THREE.DoubleSide})); rosette.rotation.x=-Math.PI/2; rosette.position.set(0,topY+.005,-.35); guitar.add(rosette);
     if(type==='acoustic'){ const pg=new THREE.Mesh(new THREE.CircleGeometry(.3,32),new THREE.MeshStandardMaterial({color:0x151515,roughness:.3,side:THREE.DoubleSide})); pg.rotation.x=-Math.PI/2; pg.position.set(.33,topY+.004,-.2); pg.scale.set(1,1.3,1); guitar.add(pg); parts.pickguard=pg; }
   } else {
     const pgS=new THREE.Shape(); pgS.moveTo(-.55,-.9); pgS.lineTo(.5,-.9); pgS.lineTo(.6,.2); pgS.lineTo(.2,.8); pgS.lineTo(-.6,.6); pgS.lineTo(-.55,-.9);
     const pg=new THREE.Mesh(new THREE.ShapeGeometry(pgS),new THREE.MeshStandardMaterial({color:0xf0f0f0,roughness:.3,side:THREE.DoubleSide})); pg.rotation.x=-Math.PI/2; pg.position.set(0,topY+.003,0); guitar.add(pg); parts.pickguard=pg;
     const pk=type==='bass'?2:3; const pkG=new THREE.Group();
     for(let i=0;i<pk;i++){ const p=new THREE.Mesh(new THREE.BoxGeometry(.8,.05,.16),pickMat); p.position.set(0,topY+.03,-0.55+i*.35); pkG.add(p);
-      for(let j=0;j<nStr;j++){ const pole=new THREE.Mesh(new THREE.CylinderGeometry(.02,.02,.02,8),metal); pole.position.set(-.35+j*(.7/(nStr-1)),topY+.06,-0.55+i*.35); pkG.add(pole);} }
+      for(let j=0;j<nStr;j++){ const pole=new THREE.Mesh(new THREE.CylinderGeometry(.02,.02,.02,16),metal); pole.position.set(-.35+j*(.7/(nStr-1)),topY+.06,-0.55+i*.35); pkG.add(pole);} }
     guitar.add(pkG); parts.pickups=pkG;
-    const knobs=new THREE.Group(); for(let i=0;i<3;i++){ const k=new THREE.Mesh(new THREE.CylinderGeometry(.08,.09,.06,24),metal); k.position.set(.55,topY+.03,-.1+i*.25); knobs.add(k);} guitar.add(knobs); parts.knobs=knobs;
+    const knobs=new THREE.Group(); for(let i=0;i<3;i++){ const k=new THREE.Mesh(new THREE.CylinderGeometry(.08,.09,.06,48),metal); k.position.set(.55,topY+.03,-.1+i*.25); knobs.add(k);} guitar.add(knobs); parts.knobs=knobs;
   }
   // bridge
   const bridge=new THREE.Mesh(new THREE.BoxGeometry(.7,.06,.18),isE?metal:fretMat); bridge.position.set(0,topY+.03,.5); guitar.add(bridge); parts.bridge=bridge;
   // neck
   const neckLen=scaleLen*.72;
-  const neckGeo=new THREE.BoxGeometry(type==='classical'?.36:.3,.12,neckLen); const neck=new THREE.Mesh(neckGeo,neckMat); neck.castShadow=true;
-  const neckZ0=-0.9; neck.position.set(0,topY-.0,neckZ0-neckLen/2+.3); guitar.add(neck); parts.neck=neck;
+  const neckGeo=new THREE.CylinderGeometry(1,1,neckLen,48,1,false,0,Math.PI); neckGeo.rotateX(Math.PI/2); neckGeo.rotateZ(Math.PI); neckGeo.scale((type==='classical'?.36:.3)/2,.11,1); const neck=new THREE.Mesh(neckGeo,neckMat); neck.castShadow=true;
+  const neckZ0=-0.9; neck.position.set(0,topY+.055,neckZ0-neckLen/2+.3); guitar.add(neck); parts.neck=neck;
   // fretboard
   const fb=new THREE.Mesh(new THREE.BoxGeometry(type==='classical'?.36:.3,.03,neckLen),fretMat); fb.position.set(0,topY+.07,neck.position.z); guitar.add(fb); parts.fretboard=fb;
   // frets
   const frets=new THREE.Group(); const nutZ=neck.position.z-neckLen/2; const bridgeZ=bridge.position.z;
   const nFrets=type==='classical'?19:22;
-  for(let i=1;i<=nFrets;i++){ const z=bridgeZ-(bridgeZ-nutZ)/Math.pow(2,i/12); if(z<nutZ)break; const f=new THREE.Mesh(new THREE.BoxGeometry(fb.geometry.parameters.width,.015,.02),metal); f.position.set(0,topY+.09,z); frets.add(f);
-    if([3,5,7,9,15,17,19].includes(i)){ const dot=new THREE.Mesh(new THREE.CircleGeometry(.02,16),new THREE.MeshStandardMaterial({color:0xfff})); dot.rotation.x=-Math.PI/2; const zPrev=bridgeZ-(bridgeZ-nutZ)/Math.pow(2,(i-1)/12); dot.position.set(0,topY+.087,(z+zPrev)/2); frets.add(dot);} 
-    if(i===12){ for(const dx of[-.08,.08]){ const dot=new THREE.Mesh(new THREE.CircleGeometry(.02,16),new THREE.MeshStandardMaterial({color:0xfff})); dot.rotation.x=-Math.PI/2; const zPrev=bridgeZ-(bridgeZ-nutZ)/Math.pow(2,(i-1)/12); dot.position.set(dx,topY+.087,(z+zPrev)/2); frets.add(dot);} } }
+  for(let i=1;i<=nFrets;i++){ const z=bridgeZ-(bridgeZ-nutZ)/Math.pow(2,i/12); if(z<nutZ)break; const f=new THREE.Mesh(new THREE.CylinderGeometry(.01,.01,fb.geometry.parameters.width,16),metal); f.rotation.z=Math.PI/2; f.position.set(0,topY+.09,z); frets.add(f);
+    if([3,5,7,9,15,17,19].includes(i)){ const dot=new THREE.Mesh(new THREE.CircleGeometry(.02,32),new THREE.MeshStandardMaterial({color:0xfff})); dot.rotation.x=-Math.PI/2; const zPrev=bridgeZ-(bridgeZ-nutZ)/Math.pow(2,(i-1)/12); dot.position.set(0,topY+.087,(z+zPrev)/2); frets.add(dot);} 
+    if(i===12){ for(const dx of[-.08,.08]){ const dot=new THREE.Mesh(new THREE.CircleGeometry(.02,32),new THREE.MeshStandardMaterial({color:0xfff})); dot.rotation.x=-Math.PI/2; const zPrev=bridgeZ-(bridgeZ-nutZ)/Math.pow(2,(i-1)/12); dot.position.set(dx,topY+.087,(z+zPrev)/2); frets.add(dot);} } }
   guitar.add(frets); parts.frets=frets;
   // nut
   const nut=new THREE.Mesh(new THREE.BoxGeometry(fb.geometry.parameters.width,.04,.04),new THREE.MeshStandardMaterial({color:0xfaf6e8})); nut.position.set(0,topY+.1,nutZ); guitar.add(nut); parts.nut=nut;
@@ -478,13 +496,13 @@ function buildGuitar(type){
   // tuners
   const tun=new THREE.Group();
   for(let i=0;i<nStr;i++){ const side=isE?1:(i<nStr/2?-1:1); const zz = isE? nutZ-.08-i*(hsLen-.15)/(nStr) : nutZ-.1-(i%(nStr/2))*.16;
-    const peg=new THREE.Mesh(new THREE.CylinderGeometry(.015,.015,.14,8),metal); peg.rotation.z=Math.PI/2; peg.position.set(side*.22,topY+.02,zz); tun.add(peg);
+    const peg=new THREE.Mesh(new THREE.CylinderGeometry(.015,.015,.14,16),metal); peg.rotation.z=Math.PI/2; peg.position.set(side*.22,topY+.02,zz); tun.add(peg);
     const key=new THREE.Mesh(new THREE.BoxGeometry(.03,.08,.05),metal); key.position.set(side*.3,topY+.02,zz); tun.add(key); }
   guitar.add(tun); parts.tuners=tun;
   // strings
   const sGroup=new THREE.Group(); const w=(fb.geometry.parameters.width-.08); const sLen=bridgeZ-nutZ+.05; 
   for(let i=0;i<nStr;i++){ const x=-w/2+i*(w/(nStr-1)); const r=type==='bass'?.012-i*.002:.006+(nStr-1-i)*.0015;
-    const s=new THREE.Mesh(new THREE.CylinderGeometry(r,r,sLen,16),type==='classical'&&i>=3?nylonMat:stringMat); s.rotation.x=Math.PI/2; s.position.set(x,topY+.12,(bridgeZ+nutZ)/2); s.userData.idx=i; s.userData.vib=0; sGroup.add(s); strings.push(s); stringBaseY.push(s.position.y); }
+    const s=new THREE.Mesh(new THREE.CylinderGeometry(r,r,sLen,24),type==='classical'&&i>=3?nylonMat:stringMat); s.rotation.x=Math.PI/2; s.position.set(x,topY+.12,(bridgeZ+nutZ)/2); s.userData.idx=i; s.userData.vib=0; sGroup.add(s); strings.push(s); stringBaseY.push(s.position.y); }
   guitar.add(sGroup); parts.strings=sGroup;
   // strap button / jack
   if(isE){ const jack=new THREE.Mesh(new THREE.CylinderGeometry(.05,.05,.04,16),metal); jack.rotation.z=Math.PI/2; jack.position.set(.85,body.position.y,-.4); guitar.add(jack); }
@@ -494,9 +512,9 @@ function buildGuitar(type){
 }
 
 /* ---------- finish / color ---------- */
-const COLORS=[0xc98a3c,0x2b1a10,0xb8262b,0x1c4fa1,0x1e8a4c,0xf5f0e6,0x111111,0xf2a93b,0x7a2d8e,0x00b4d8];
+const COLORS=[0xc98a3c,0x2b1a10,0xb8262b,0x1c4fa1,0x1e8a4c,0xf5f0e6,0x111111,0xd4a017,0x7a2d8e,0x0f172a];
 let currentFinish='gloss';
-function applyFinish(f){ currentFinish=f; const wood=!(currentType==='electric'||currentType==='bass'); bodyMat.map=wood?spruceTex:null; bodyMat.bumpMap=wood?bumpFrom(spruceTex):null; bodyMat.metalness=0; bodyMat.roughness=.18; bodyMat.clearcoat=1; bodyMat.clearcoatRoughness=.06;
+function applyFinish(f){ currentFinish=f; const wood=!(currentType==='electric'||currentType==='bass'); bodyMat.map=wood?spruceTex:null; bodyMat.bumpMap=wood?bumpFrom(spruceTex):null; bodyMat.metalness=0; bodyMat.roughness=.35; bodyMat.clearcoat=.8; bodyMat.clearcoatRoughness=.15;
   if(f==='matte'){bodyMat.roughness=.8;bodyMat.clearcoat=0;} if(f==='metal'){bodyMat.map=null;bodyMat.bumpMap=null;bodyMat.metalness=.95;bodyMat.roughness=.12;bodyMat.clearcoat=1;}
   if(f==='sunburst'){ const c=document.createElement('canvas'); c.width=c.height=1024; const g=c.getContext('2d'); const gr=g.createRadialGradient(512,512,120,512,512,620); gr.addColorStop(0,'rgba(246,199,106,0)'); gr.addColorStop(.55,'rgba(184,70,30,.75)'); gr.addColorStop(1,'rgba(20,8,4,.98)'); g.drawImage(spruceTex.image,0,0,1024,1024); g.fillStyle=gr; g.fillRect(0,0,1024,1024); const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; t.anisotropy=renderer.capabilities.getMaxAnisotropy(); bodyMat.map=t; bodyMat.color.set(0xffffff); }
   else bodyMat.color.set(currentColor); bodyMat.needsUpdate=true; }
@@ -507,12 +525,12 @@ document.querySelectorAll('#finishBtns button').forEach(b=>b.onclick=()=>{setAct
 document.querySelectorAll('#typeBtns button').forEach(b=>b.onclick=()=>{setActive('#typeBtns','t',b.dataset.t);buildGuitar(b.dataset.t);});
 
 /* ---------- env ---------- */
-function setEnv(e){ p1.intensity=p2.intensity=0; rim.color.set(0xf2a93b); rim.intensity=3; key.color.set(0xffffff); fill.color.set(0x88aaff); particles.material.color.set(0xf2a93b);
+function setEnv(e){ p1.intensity=p2.intensity=0; rim.color.set(0x22d3ee); rim.intensity=1.5; key.color.set(0xffffff); fill.color.set(0x88aaff); particles.material.color.set(0x22d3ee);
   let bg=0x0b0d12;
-  if(e==='stage'){bg=0x05030a; p1.intensity=25; p2.intensity=25; rim.intensity=8; particles.material.color.set(0xff3366);} 
+  if(e==='stage'){bg=0x05030a; p1.intensity=10; p2.intensity=10; rim.intensity=4; particles.material.color.set(0xff3366);} 
   if(e==='sunset'){bg=0x2a1218; key.color.set(0xffb07a); fill.color.set(0x7a4bff); rim.color.set(0xff6b3a); particles.material.color.set(0xffb07a);} 
-  if(e==='neon'){bg=0x02040a; key.color.set(0x00ffe0); fill.color.set(0xff00c8); rim.color.set(0x8a2be2); rim.intensity=10; p1.color.set(0xff00c8); p2.color.set(0x00ffe0); p1.intensity=15; p2.intensity=15; particles.material.color.set(0x00ffe0);} 
-  bloom.strength = e==='neon'?.55 : e==='stage'?.45 : e==='sunset'?.3 : .2; bloom.threshold = e==='neon'?.7:.9;
+  if(e==='neon'){bg=0x02040a; key.color.set(0x00ffe0); fill.color.set(0xff00c8); rim.color.set(0x8a2be2); rim.intensity=5; p1.color.set(0xff00c8); p2.color.set(0x00ffe0); p1.intensity=7; p2.intensity=7; particles.material.color.set(0x00ffe0);} 
+  bloom.strength = e==='neon'?.35 : e==='stage'?.25 : e==='sunset'?.15 : .08; bloom.threshold = e==='neon'?.8:.95;
   scene.background.set(bg); scene.fog.color.set(bg); }
 document.querySelectorAll('#envBtns button').forEach(b=>b.onclick=()=>{setActive('#envBtns','e',b.dataset.e);setEnv(b.dataset.e);});
 document.getElementById('lightRange').oninput=e=>{const v=+e.target.value; document.getElementById('lightVal').textContent=v.toFixed(1); renderer.toneMappingExposure=v;};
@@ -533,12 +551,12 @@ document.querySelectorAll('[data-cam]').forEach(b=>b.onclick=()=>{camAnim={from:
 // labels (CSS overlay)
 const labelDefs={headstock:'سر گیتار',tuners:'گوشی‌ها',nut:'شیطانک',fretboard:'صفحه انگشت‌گذاری',frets:'فرت‌ها',body:'بدنه',soundhole:'دهانه صوتی',bridge:'خرک',pickups:'پیکاپ‌ها',strings:'سیم‌ها',pickguard:'صفحه محافظ',knobs:'ولوم و تُن',neck:'دسته'};
 const labelLayer=document.createElement('div'); labelLayer.style.cssText='position:absolute;inset:0;pointer-events:none;'; hero.appendChild(labelLayer);
-const labelEls={}; for(const k in labelDefs){ const el=document.createElement('div'); el.textContent=labelDefs[k]; el.style.cssText='position:absolute;transform:translate(-50%,-50%);background:rgba(0,0,0,.7);color:#f2a93b;padding:3px 9px;border-radius:12px;font-size:11px;border:1px solid rgba(242,169,59,.5);display:none;white-space:nowrap'; labelLayer.appendChild(el); labelEls[k]=el; }
+const labelEls={}; for(const k in labelDefs){ const el=document.createElement('div'); el.textContent=labelDefs[k]; el.style.cssText='position:absolute;transform:translate(-50%,-50%);background:rgba(0,0,0,.7);color:#22d3ee;padding:3px 9px;border-radius:12px;font-size:11px;border:1px solid rgba(34,211,238,.5);display:none;white-space:nowrap'; labelLayer.appendChild(el); labelEls[k]=el; }
 function updateLabels(){ const on=document.getElementById('labels').checked; const v=new THREE.Vector3(); for(const k in labelEls){ const p=parts[k]; if(!on||!p){labelEls[k].style.display='none';continue;} new THREE.Box3().setFromObject(p).getCenter(v); v.project(camera); labelEls[k].style.display='block'; labelEls[k].style.left=(v.x*.5+.5)*innerWidth+'px'; labelEls[k].style.top=(-v.y*.5+.5)*innerHeight+'px'; } }
 
 // highlight part
 let hl=null,hlMats=[];
-function highlight(k){ if(hl){ hl.traverse(o=>{if(o.isMesh&&o.userData._m){o.material=o.userData._m;delete o.userData._m;}}); } hl=parts[k]; if(!hl)return; const m=new THREE.MeshStandardMaterial({color:0xf2a93b,emissive:0xf2a93b,emissiveIntensity:.6}); hl.traverse(o=>{if(o.isMesh){o.userData._m=o.material;o.material=m;}}); setTimeout(()=>{ if(hl===parts[k]) highlight(null); },2500); }
+function highlight(k){ if(hl){ hl.traverse(o=>{if(o.isMesh&&o.userData._m){o.material=o.userData._m;delete o.userData._m;}}); } hl=parts[k]; if(!hl)return; const m=new THREE.MeshStandardMaterial({color:0x22d3ee,emissive:0x22d3ee,emissiveIntensity:.6}); hl.traverse(o=>{if(o.isMesh){o.userData._m=o.material;o.material=m;}}); setTimeout(()=>{ if(hl===parts[k]) highlight(null); },2500); }
 
 // strum & raycast
 const openMidi={acoustic:[40,45,50,55,59,64],classical:[40,45,50,55,59,64],electric:[40,45,50,55,59,64],bass:[28,33,38,43]};
@@ -604,7 +622,7 @@ function drawChord(){ document.querySelectorAll('#chordNav button').forEach(b=>b
   const x0=40,y0=50,sx=28,sy=40; let s=`<rect x="${x0-4}" y="${y0-6}" width="${sx*5+8}" height="7" fill="#eee"/>`;
   for(let i=0;i<6;i++) s+=`<line x1="${x0+i*sx}" y1="${y0}" x2="${x0+i*sx}" y2="${y0+sy*4}" stroke="#aaa" stroke-width="${2.5-i*.3}"/>`;
   for(let j=0;j<=4;j++) s+=`<line x1="${x0}" y1="${y0+j*sy}" x2="${x0+sx*5}" y2="${y0+j*sy}" stroke="#666" stroke-width="2"/>`;
-  c.f.forEach((f,i)=>{ const x=x0+i*sx; if(f===-1) s+=`<text x="${x}" y="${y0-14}" fill="#e0623a" font-size="16" text-anchor="middle">✕</text>`; else if(f===0) s+=`<circle cx="${x}" cy="${y0-18}" r="6" fill="none" stroke="#eee" stroke-width="2"/>`; else s+=`<circle cx="${x}" cy="${y0+(f-.5)*sy}" r="10" fill="#f2a93b"/>`; });
+  c.f.forEach((f,i)=>{ const x=x0+i*sx; if(f===-1) s+=`<text x="${x}" y="${y0-14}" fill="#8b5cf6" font-size="16" text-anchor="middle">✕</text>`; else if(f===0) s+=`<circle cx="${x}" cy="${y0-18}" r="6" fill="none" stroke="#eee" stroke-width="2"/>`; else s+=`<circle cx="${x}" cy="${y0+(f-.5)*sy}" r="10" fill="#22d3ee"/>`; });
   s+=`<text x="${x0+sx*5+12}" y="${y0+20}" fill="#9aa3b5" font-size="13">1</text>`;
   document.getElementById('chordSvg').innerHTML=s; }
 drawChord();
