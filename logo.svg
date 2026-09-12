@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0ea5b7"/><stop offset="1" stop-color="#7c5cf6"/></linearGradient>
+    <linearGradient id="s" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity=".6"/></linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#g)"/>
+  <!-- guitar body -->
+  <path d="M26 46c-6.5 0-11-4.3-11-10.2 0-3.6 2.4-5.4 2.4-8 0-2.6-1.8-4.3-1.8-7.4C15.6 15.2 20 11 26 11s10.4 4.2 10.4 9.4c0 3.1-1.8 4.8-1.8 7.4 0 2.6 2.4 4.4 2.4 8C37 41.7 32.5 46 26 46z" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-width="2.2" stroke-linejoin="round"/>
+  <circle cx="26" cy="31" r="4.2" fill="none" stroke="#fff" stroke-width="2.2"/>
+  <!-- neck -->
+  <path d="M33.5 24.5 50 8" stroke="#fff" stroke-width="5.2" stroke-linecap="round"/>
+  <path d="M33.5 24.5 50 8" stroke="url(#g)" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+  <path d="M39 19l3 3M42 16l3 3M45 13l3 3" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="52.5" cy="6.5" r="3.6" fill="#fff"/>
+  <!-- 3D cube mark -->
+  <g transform="translate(40 40)">
+    <path d="M0-8 8-4v8L0 8l-8-4v-8z" fill="url(#s)"/>
+    <path d="M0-8 8-4 0 0l-8-4z" fill="#fff"/>
+    <path d="M0 0v8l8-4v-8z" fill="#e2e8f0"/>
+  </g>
+</svg>
